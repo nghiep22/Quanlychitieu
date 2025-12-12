@@ -14,6 +14,8 @@ builder.Services.AddScoped<DanhMuc_DAL>();
 builder.Services.AddScoped<IDanhMuc_BLL, DanhMuc_BLL>();
 builder.Services.AddScoped<GiaoDich_DAL>();
 builder.Services.AddScoped<IGiaoDich_BLL, GiaoDich_BLL>();
+builder.Services.AddScoped<WalletTransfer_DAL>();
+builder.Services.AddScoped<IWalletTransfer_BLL, WalletTransfer_BLL>();
 
 var app = builder.Build();
 
