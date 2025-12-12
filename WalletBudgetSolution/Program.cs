@@ -1,0 +1,28 @@
+﻿using BLL;
+using DAL;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+// DI Vi
+builder.Services.AddScoped<Vi_DAL>();
+builder.Services.AddScoped<IVi_BLL, Vi_BLL>();
+builder.Services.AddScoped<DanhMuc_DAL>();
+builder.Services.AddScoped<IDanhMuc_BLL, DanhMuc_BLL>();
+builder.Services.AddScoped<GiaoDich_DAL>();
+builder.Services.AddScoped<IGiaoDich_BLL, GiaoDich_BLL>();
+
+var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+app.MapControllers();
+app.Run();
