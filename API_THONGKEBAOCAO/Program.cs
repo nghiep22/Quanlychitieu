@@ -10,6 +10,8 @@ builder.Services.AddSwaggerGen();
 // DI
 builder.Services.AddScoped<NganSach_DAL>();
 builder.Services.AddScoped<INganSach_BLL, NganSach_BLL>();
+builder.Services.AddScoped<MucTieuTietKiem_DAL>();
+builder.Services.AddScoped<IMucTieuTietKiem_BLL, MucTieuTietKiem_BLL>();
 
 var app = builder.Build();
 
