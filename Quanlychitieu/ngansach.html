@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QL Ngân Quỹ - Ngân sách</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <div class="logo"><h1>QL Ngân Quỹ</h1></div>
+      <div class="header-search">
+        <input type="text" placeholder="Tìm kiếm ngân sách...">
+      </div>
+      <div class="header-right">
+        <div class="avatar-dropdown">
+          <img src="https://via.placeholder.com/40" alt="Avatar" class="avatar-img">
+          <span class="user-name">Trần Văn A</span>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item">Hồ sơ</a>
+            <a href="#" class="dropdown-item">Đổi mật khẩu</a>
+            <a href="#" class="dropdown-item" id="btnLogoutUser">Đăng xuất</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-item">Tổng quan</a>
+      <a href="giaodich.html" class="nav-item">Giao dịch</a>
+      <a href="vi.html" class="nav-item">Ví</a>
+      <a href="danhmuc.html" class="nav-item">Danh mục</a>
+      <a href="ngansach.html" class="nav-item active">Ngân sách</a>
+      <a href="muctieu.html" class="nav-item">Mục tiêu</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="grid">
+      <div class="left">
+        <div class="card">
+          <div class="card-header">
+            <h2>Ngân sách theo danh mục</h2>
+            <button class="btn btn-primary" id="btnAddBudget">+ Tạo ngân sách</button>
+          </div>
+
+          <div class="budget-list">
+            <div class="budget-item">
+              <div class="budget-header">
+                <span class="budget-name">Ăn uống</span>
+                <span class="budget-used">3,500,000 / 5,000,000 ₫</span>
+              </div>
+              <div class="progress"><div class="progress-bar" style="width:70%"></div></div>
+            </div>
+
+            <div class="budget-item">
+              <div class="budget-header">
+                <span class="budget-name">Giao thông</span>
+                <span class="budget-used">450,000 / 1,000,000 ₫</span>
+              </div>
+              <div class="progress"><div class="progress-bar" style="width:45%"></div></div>
+            </div>
+
+            <div class="budget-item">
+              <div class="budget-header">
+                <span class="budget-name">Mua sắm</span>
+                <span class="budget-used">2,100,000 / 2,000,000 ₫</span>
+              </div>
+              <div class="progress"><div class="progress-bar warning" style="width:105%"></div></div>
+              <div class="alert-warning">⚠️ Vượt ngân sách</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Lịch sử cảnh báo</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Thời gian</th>
+                  <th>Danh mục</th>
+                  <th>Nội dung</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>12/12/2024 10:30</td>
+                  <td>Mua sắm</td>
+                  <td>Vượt ngân sách 5%</td>
+                </tr>
+                <tr>
+                  <td>10/12/2024 08:10</td>
+                  <td>Ăn uống</td>
+                  <td>Đã dùng 70% ngân sách</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="card">
+          <h2>Mẹo</h2>
+          <p style="color:#64748b;">Bạn có thể đặt ngân sách theo tháng (TGBatDau/TGKetThuc) để theo dõi sát hơn.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer"><p>&copy; 2024 QL Ngân Quỹ.</p></footer>
+</body>
+</html>

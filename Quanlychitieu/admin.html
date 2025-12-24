@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QL Ngân Quỹ - Admin Dashboard</title>
+    <style>
+        /* ============================================
+           RESET & VARIABLES
+           ============================================ */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-sidebar: #1f2937;
+            --color-sidebar-hover: #374151;
+            --color-primary: #3b82f6;
+            --color-primary-hover: #2563eb;
+            --color-success: #10b981;
+            --color-danger: #ef4444;
+            --color-warning: #f59e0b;
+            --color-bg: #f3f4f6;
+            --color-card: #ffffff;
+            --color-text: #1f2937;
+            --color-text-light: #6b7280;
+            --color-border: #e5e7eb;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           LAYOUT: SIDEBAR + TOPBAR + MAIN
+           ============================================ */
+
+        .wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* ============================================
+           SIDEBAR
+           ============================================ */
+
+        .sidebar {
+            width: 260px;
+            background: var(--color-sidebar);
+            color: white;
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-md);
+            z-index: 50;
+        }
+
+        .sidebar-logo {
+            padding: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 20px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .sidebar-menu {
+            padding: 20px 0;
+        }
+
+        .sidebar-menu a {
+            display: block;
+            padding: 14px 20px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+            margin: 4px 0;
+        }
+
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background: var(--color-sidebar-hover);
+            color: white;
+            border-left-color: var(--color-primary);
+        }
+
+        /* ============================================
+           TOPBAR
+           ============================================ */
+
+        .topbar {
+            background: var(--color-card);
+            border-bottom: 1px solid var(--color-border);
+            height: 64px;
+            padding: 0 24px;
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            box-shadow: var(--shadow-sm);
+            margin-left: 260px;
+        }
+
+        .topbar-content {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .topbar-search input {
+            width: 280px;
+            padding: 10px 16px;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .topbar-search input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .topbar-bell {
+            font-size: 20px;
+            cursor: pointer;
+            color: var(--color-text-light);
+            transition: var(--transition);
+        }
+
+        .topbar-bell:hover {
+            color: var(--color-primary);
+        }
+
+        .topbar-avatar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .topbar-avatar img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .topbar-avatar span {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* ============================================
+           MAIN CONTENT
+           ============================================ */
+
+        .main {
+            flex: 1;
+            margin-left: 260px;
+            padding: 32px 24px;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .page-header h1 {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        /* ============================================
+           CARDS - STATISTICS
+           ============================================ */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .card {
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: 14px;
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .card-stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .card-stat-content h3 {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--color-text-light);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .card-stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        .card-stat-icon {
+            font-size: 32px;
+            opacity: 0.2;
+        }
+
+        /* ============================================
+           CARD SECTIONS
+           ============================================ */
+
+        .card-section {
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: 14px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .card-section h2 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-header h2 {
+            margin: 0;
+        }
+
+        /* ============================================
+           FILTERS
+           ============================================ */
+
+        .filters {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filters input,
+        .filters select {
+            padding: 8px 12px;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .filters input:focus,
+        .filters select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        /* ============================================
+           TABLES
+           ============================================ */
+
+        .table-wrap {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        thead {
+            background: var(--color-bg);
+        }
+
+        th {
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--color-text);
+            border-bottom: 2px solid var(--color-border);
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        tbody tr:hover {
+            background: var(--color-bg);
+        }
+
+        tbody tr:nth-child(even) {
+            background: rgba(243, 244, 246, 0.5);
+        }
+
+        /* ============================================
+           STATUS BADGES
+           ============================================ */
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--color-success);
+        }
+
+        .badge-warning {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--color-warning);
+        }
+
+        .badge-danger {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--color-danger);
+        }
+
+        /* ============================================
+           PROGRESS
+           ============================================ */
+
+        .progress {
+            width: 100%;
+            height: 6px;
+            background: var(--color-border);
+            border-radius: 100px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--color-primary);
+            border-radius: 100px;
+            transition: var(--transition);
+        }
+
+        .progress-value {
+            font-size: 12px;
+            color: var(--color-text-light);
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* ============================================
+           BUTTONS
+           ============================================ */
+
+        .btn {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-success {
+            background: var(--color-success);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #059669;
+        }
+
+        .btn-danger {
+            background: var(--color-danger);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--color-primary);
+            border: 1px solid var(--color-primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+
+        /* ============================================
+           MODALS
+           ============================================ */
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 300;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--color-card);
+            border-radius: 14px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-md);
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--color-text-light);
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--color-text);
+        }
+
+        .modal-body {
+            padding: 24px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: var(--color-text);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 10px 12px;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            padding: 20px 24px;
+            border-top: 1px solid var(--color-border);
+            justify-content: flex-end;
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+
+        @media (max-width: 1200px) {
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 240px;
+            }
+
+            .topbar {
+                margin-left: 240px;
+            }
+
+            .main {
+                margin-left: 240px;
+            }
+
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .topbar-search input {
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                box-shadow: none;
+                border-bottom: 1px solid var(--color-border);
+            }
+
+            .topbar {
+                margin-left: 0;
+                height: auto;
+                flex-wrap: wrap;
+                padding: 12px;
+            }
+
+            .topbar-content {
+                flex-wrap: wrap;
+            }
+
+            .topbar-search input {
+                width: 100%;
+                display: none;
+            }
+
+            .main {
+                margin-left: 0;
+                padding: 16px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            th,
+            td {
+                padding: 8px;
+            }
+
+            .filters {
+                flex-direction: column;
+            }
+
+            .filters input,
+            .filters select {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <div class="sidebar-logo">📊 QL Ngân Quỹ</div>
+            <nav class="sidebar-menu">
+                <a href="#" class="active">📈 Tổng quan</a>
+                <a href="#">👥 Quản lý tài khoản</a>
+                <a href="#">💼 Quản lý ví</a>
+                <a href="#">📋 Quản lý danh mục</a>
+                <a href="#">🔄 Quản lý giao dịch</a>
+                <a href="#">💰 Ngân sách</a>
+                <a href="#">🎯 Mục tiêu tiết kiệm</a>
+                <a href="#">↔️ Chuyển tiền ví</a>
+                <a href="#">🔔 Thông báo</a>
+                <a href="#">📝 Nhật ký hệ thống</a>
+                <a href="#">⚙️ Cài đặt</a>
+                <a href="#" id="btnLogout">🚪 Đăng xuất</a>
+            </nav>
+        </div>
+
+        <!-- TOPBAR & MAIN -->
+        <div style="flex: 1;">
+            <!-- TOPBAR -->
+            <div class="topbar">
+                <div class="topbar-content">
+                    <div class="topbar-search">
+                        <input type="text" placeholder="Tìm kiếm...">
+                    </div>
+                    <div class="topbar-right">
+                        <div class="topbar-bell">🔔</div>
+                        <div class="topbar-avatar">
+                            <img src="https://via.placeholder.com/40" alt="Admin">
+                            <span>Admin</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MAIN CONTENT -->
+            <div class="main">
+                <div class="main-content">
+                    <!-- Statistics Cards -->
+                    <div class="cards">
+                        <div class="card">
+                            <div class="card-stat">
+                                <div class="card-stat-content">
+                                    <h3>Tổng người dùng</h3>
+                                    <div class="card-stat-value">1,245</div>
+                                </div>
+                                <div class="card-stat-icon">👥</div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-stat">
+                                <div class="card-stat-content">
+                                    <h3>Giao dịch tháng này</h3>
+                                    <div class="card-stat-value">3,856</div>
+                                </div>
+                                <div class="card-stat-icon">🔄</div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-stat">
+                                <div class="card-stat-content">
+                                    <h3>Tổng chi tháng</h3>
+                                    <div class="card-stat-value">2.5B ₫</div>
+                                </div>
+                                <div class="card-stat-icon">💸</div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-stat">
+                                <div class="card-stat-content">
+                                    <h3>Cảnh báo ngân sách</h3>
+                                    <div class="card-stat-value">34</div>
+                                </div>
+                                <div class="card-stat-icon">⚠️</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- QUẢN LÝ TÀI KHOẢN -->
+                    <div class="card-section">
+                        <div class="section-header">
+                            <h2>Quản lý tài khoản</h2>
+                            <button class="btn btn-primary" id="btnAddUser">+ Thêm tài khoản</button>
+                        </div>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Tên đăng nhập</th>
+                                        <th>Họ tên</th>
+                                        <th>Quyền</th>
+                                        <th>Trạng thái</th>
+                                        <th>Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>tranvana</td>
+                                        <td>Trần Văn A</td>
+                                        <td>User</td>
+                                        <td><span class="badge badge-success">Hoạt động</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline">Sửa</button>
+                                            <button class="btn btn-sm btn-danger">Khóa</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>nguyenbthuy</td>
+                                        <td>Nguyễn Bảo Thủy</td>
+                                        <td>User</td>
+                                        <td><span class="badge badge-success">Hoạt động</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline">Sửa</button>
+                                            <button class="btn btn-sm btn-danger">Khóa</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>phamminhtuan</td>
+                                        <td>Phạm Minh Tuấn</td>
+                                        <td>User</td>
+                                        <td><span class="badge badge-danger">Khóa</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline">Sửa</button>
+                                            <button class="btn btn-sm btn-success">Kích hoạt</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>hoanghuongnhi</td>
+                                        <td>Hoàng Hương Nhi</td>
+                                        <td>User</td>
+                                        <td><span class="badge badge-success">Hoạt động</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline">Sửa</button>
+                                            <button class="btn btn-sm btn-danger">Khóa</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- QUẢN LÝ VÍ -->
+                    <div class="card-section">
+                        <div class="section-header">
+                            <h2>Quản lý ví</h2>
+                            <button class="btn btn-primary" id="btnAddWallet">+ Thêm ví</button>
+                        </div>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Tên ví</th>
+                                        <th>Loại ví</th>
+                                        <th>Số dư ban đầu</th>
+                                        <th>Trạng thái</th>
+                                        <th>Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Tiền mặt</td>
+                                        <td>Tiền mặt</td>
+                                        <td>2,500,000 ₫</td>
+                                        <td><span class="badge badge-success">Hoạt động</span></td>
+                                        <td><button class="btn btn-sm btn-outline">Sửa</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Vietcombank</td>
+                                        <td>Ngân hàng</td>
+                                        <td>15,000,000 ₫</td>
+                                        <td><span class="badge badge-success">Hoạt động</span></td>
+                                        <td><button class="btn btn-sm btn-outline">Sửa</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>MoMo</td>
+                                        <td>Ví điện tử</td>
+                                        <td>1,200,000 ₫</td>
+                                        <td><span class="badge badge-success">Hoạt động</span></td>
+                                        <td><button class="btn btn-sm btn-outline">Sửa</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- QUẢN LÝ DANH MỤC -->
+                    <div class="card-section">
+                        <div class="section-header">
+                            <h2>Quản lý danh mục</h2>
+                            <button class="btn btn-primary" id="btnAddCategory">+ Thêm danh mục</button>
+                        </div>
+                        <div class="filters">
+                            <select>
+                                <option>-- Lọc theo loại --</option>
+                                <option>Thu</option>
+                                <option>Chi</option>
+                            </select>
+                        </div>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Tên danh mục</th>
+                                        <th>Loại</th>
+                                        <th>Icon</th>
+                                        <th>Màu sắc</th>
+                                        <th>Trạng thái</th>
+                                        <th>Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Lương</td>
+                                        <td><span class="badge badge-success">Thu</span></td>
+                                        <td>💰</td>
+                                        <td><div style="width: 30px; height: 20px; background: #10b981; border-radius: 4px;"></div></td>
+                                        <td><span class="badge badge-success">Hoạt động</span></td>
+                                        <td><button class="btn btn-sm btn-outline">Sửa</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ăn uống</td>
+                                        <td><span class="badge badge-danger">Chi</span></td>
+                                        <td>🍽️</td>
+                                        <td><div style="width: 30px; height: 20px; background: #ef4444; border-radius: 4px;"></div></td>
+                                        <td><span class="badge badge-success">Hoạt động</span></td>
+                                        <td><button class="btn btn-sm btn-outline">Sửa</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Giao thông</td>
+                                        <td><span class="badge badge-danger">Chi</span></td>
+                                        <td>🚗</td>
+                                        <td><div style="width: 30px; height: 20px; background: #f59e0b; border-radius: 4px;"></div></td>
+                                        <td><span class="badge badge-success">Hoạt động</span></td>
+                                        <td><button class="btn btn-sm btn-outline">Sửa</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- QUẢN LÝ GIAO DỊCH -->
+                    <div class="card-section">
+                        <div class="section-header">
+                            <h2>Quản lý giao dịch</h2>
+                            <button class="btn btn-primary" id="btnAddTransaction">+ Thêm giao dịch</button>
+                        </div>
+                        <div class="filters">
+                            <input type="date" id="filterDate">
+                            <select>
+                                <option>-- Loại giao dịch --</option>
+                                <option>Thu</option>
+                                <option>Chi</option>
+                            </select>
+                        </div>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Ngày</th>
+                                        <th>Loại</th>
+                                        <th>Danh mục</th>
+                                        <th>Ví</th>
+                                        <th>Số tiền</th>

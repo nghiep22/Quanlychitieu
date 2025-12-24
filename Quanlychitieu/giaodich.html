@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QL Ngân Quỹ - Giao dịch</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <div class="logo"><h1>QL Ngân Quỹ</h1></div>
+      <div class="header-search">
+        <input type="text" placeholder="Tìm kiếm giao dịch...">
+      </div>
+      <div class="header-right">
+        <div class="avatar-dropdown">
+          <img src="https://via.placeholder.com/40" alt="Avatar" class="avatar-img">
+          <span class="user-name">Trần Văn A</span>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item">Hồ sơ</a>
+            <a href="#" class="dropdown-item">Đổi mật khẩu</a>
+            <a href="#" class="dropdown-item" id="btnLogoutUser">Đăng xuất</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-item">Tổng quan</a>
+      <a href="giaodich.html" class="nav-item active">Giao dịch</a>
+      <a href="vi.html" class="nav-item">Ví</a>
+      <a href="danhmuc.html" class="nav-item">Danh mục</a>
+      <a href="ngansach.html" class="nav-item">Ngân sách</a>
+      <a href="muctieu.html" class="nav-item">Mục tiêu</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="grid">
+      <div class="left">
+        <div class="card">
+          <div class="card-header">
+            <h2>Danh sách giao dịch</h2>
+            <button class="btn btn-primary" id="btnAddTransaction">+ Thêm giao dịch</button>
+          </div>
+
+          <!-- Filters (UI) -->
+          <div class="filters" style="margin:12px 0; display:flex; gap:10px; flex-wrap:wrap;">
+            <input type="date" id="fromDate">
+            <input type="date" id="toDate">
+            <select id="filterType">
+              <option value="">-- Loại --</option>
+              <option value="THU">THU</option>
+              <option value="CHI">CHI</option>
+            </select>
+            <select id="filterWallet">
+              <option value="">-- Ví --</option>
+              <option>Tiền mặt</option>
+              <option>Vietcombank</option>
+              <option>MoMo</option>
+            </select>
+            <select id="filterCategory">
+              <option value="">-- Danh mục --</option>
+              <option>Lương</option>
+              <option>Ăn uống</option>
+              <option>Giao thông</option>
+              <option>Mua sắm</option>
+            </select>
+            <button class="btn btn-outline" type="button">Lọc</button>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Ngày</th>
+                  <th>Loại</th>
+                  <th>Danh mục</th>
+                  <th>Ví</th>
+                  <th>Số tiền</th>
+                  <th>Ghi chú</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>12/12/2024</td>
+                  <td><span class="badge badge-income">THU</span></td>
+                  <td>Lương</td>
+                  <td>Vietcombank</td>
+                  <td class="amount-income">+5,000,000 ₫</td>
+                  <td>Lương tháng 12</td>
+                </tr>
+                <tr>
+                  <td>11/12/2024</td>
+                  <td><span class="badge badge-expense">CHI</span></td>
+                  <td>Ăn uống</td>
+                  <td>MoMo</td>
+                  <td class="amount-expense">-250,000 ₫</td>
+                  <td>Ăn trưa với bạn</td>
+                </tr>
+                <tr>
+                  <td>08/12/2024</td>
+                  <td><span class="badge badge-expense">CHI</span></td>
+                  <td>Mua sắm</td>
+                  <td>MoMo</td>
+                  <td class="amount-expense">-1,200,000 ₫</td>
+                  <td>Quần áo mùa đông</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="card">
+          <h2>Tóm tắt nhanh</h2>
+          <div class="cards-mini">
+            <div class="stat">
+              <span class="stat-label">Tổng THU (lọc)</span>
+              <span class="stat-value stat-income">+7,000,000 ₫</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Tổng CHI (lọc)</span>
+              <span class="stat-value stat-expense">-1,450,000 ₫</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Gợi ý</h2>
+          <p style="color:#64748b;">Bạn có thể tạo ngân sách cho danh mục “Mua sắm” để hạn chế vượt chi.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2024 QL Ngân Quỹ.</p>
+  </footer>
+
+  <!-- (Optional) Modal y như index.html của bạn, nếu muốn giữ đồng bộ -->
+  <div class="modal" id="modalAddTransaction">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Thêm giao dịch</h2>
+        <button class="modal-close">&times;</button>
+      </div>
+      <form class="modal-form">
+        <div class="form-group">
+          <label>Loại giao dịch</label>
+          <select name="transactionType" id="transactionType">
+            <option value="">-- Chọn loại --</option>
+            <option value="THU">Thu</option>
+            <option value="CHI">Chi</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Danh mục</label>
+          <select name="categoryId" id="categoryId">
+            <option value="">-- Chọn danh mục --</option>
+            <option value="1">Lương</option>
+            <option value="2">Ăn uống</option>
+            <option value="3">Giao thông</option>
+            <option value="4">Mua sắm</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Ví</label>
+          <select name="walletId" id="walletId">
+            <option value="">-- Chọn ví --</option>
+            <option value="1">Tiền mặt</option>
+            <option value="2">Vietcombank</option>
+            <option value="3">MoMo</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Số tiền</label>
+          <input type="number" name="soTien" id="soTien" placeholder="Nhập số tiền" required>
+        </div>
+        <div class="form-group">
+          <label>Ngày giao dịch</label>
+          <input type="date" name="ngayGD" id="ngayGD" required>
+        </div>
+        <div class="form-group">
+          <label>Ghi chú</label>
+          <textarea name="ghiChu" id="ghiChu" placeholder="Ghi chú..." rows="3"></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn btn-primary">Lưu giao dịch</button>
+          <button type="button" class="btn btn-outline modal-cancel">Hủy</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

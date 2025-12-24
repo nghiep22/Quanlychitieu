@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="vi" ng-app="walletApp">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QL Ngân Quỹ - Danh mục</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body ng-controller="CategoriesCtrl as vm">
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">
+        <h1>QL Ngân Quỹ</h1>
+      </div>
+
+      <div class="header-search">
+        <input type="text" placeholder="Tìm kiếm danh mục..." ng-model="vm.filter.keyword">
+      </div>
+
+      <div class="header-right">
+        <div class="avatar-dropdown">
+          <img src="https://via.placeholder.com/40" alt="Avatar" class="avatar-img">
+          <span class="user-name">Trần Văn A</span>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item">Hồ sơ</a>
+            <a href="#" class="dropdown-item">Đổi mật khẩu</a>
+            <a href="#" class="dropdown-item" id="btnLogoutUser">Đăng xuất</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-item">Tổng quan</a>
+      <a href="giaodich.html" class="nav-item">Giao dịch</a>
+      <a href="vi.html" class="nav-item">Ví</a>
+      <a href="danhmuc.html" class="nav-item active">Danh mục</a>
+      <a href="ngansach.html" class="nav-item">Ngân sách</a>
+      <a href="muctieu.html" class="nav-item">Mục tiêu</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="grid">
+      <div class="left">
+        <div class="card">
+          <div class="card-header">
+            <h2>Danh mục thu/chi</h2>
+            <button class="btn btn-primary" id="btnAddCategory" ng-click="vm.moModalThem()">+ Thêm danh mục</button>
+          </div>
+
+          <div class="filters" style="margin:12px 0; display:flex; gap:10px; flex-wrap:wrap;">
+            <select id="filterLoai" ng-model="vm.filter.loai">
+              <option value="">-- Lọc theo loại --</option>
+              <option value="THU">THU</option>
+              <option value="CHI">CHI</option>
+            </select>
+            <button class="btn btn-outline" type="button" ng-click="vm.taiDanhSach()">Lọc</button>
+          </div>
+
+          <div style="overflow:auto;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Tên danh mục</th>
+                  <th>Loại</th>
+                  <th>Icon</th>
+                  <th>Ghi chú</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr ng-repeat="dm in (vm.danhSach | filter:vm.filter.keyword)">
+                  <td>{{dm.tenDanhMuc || dm.TenDanhMuc}}</td>
+                  <td>
+                    <span class="badge"
+                      ng-class="(dm.loai || dm.Loai) == 'THU' ? 'badge-income' : 'badge-expense'">
+                      {{dm.loai || dm.Loai}}
+                    </span>
+                  </td>
+                  <td>{{dm.icon || dm.Icon}}</td>
+                  <td>{{dm.ghiChu || dm.GhiChu}}</td>
+                </tr>
+
+                <tr ng-if="!vm.loading && (!vm.danhSach || vm.danhSach.length === 0)">
+                  <td colspan="4" style="text-align:center;color:#64748b;">Chưa có danh mục</td>
+                </tr>
+
+                <tr ng-if="vm.loading">
+                  <td colspan="4" style="text-align:center;color:#64748b;">Đang tải...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="card">
+          <h2>Gợi ý</h2>
+          <p style="color:#64748b;">Tách danh mục theo mục đích để thống kê dễ hơn (VD: “Ăn uống - sáng”, “Ăn uống - tối”).</p>
+          <p style="color:#64748b; margin-top:10px;">
+            TaiKhoanId đang dùng: <b>{{vm.taiKhoanId}}</b>
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2024 QL Ngân Quỹ.</p>
+  </footer>
+
+  <!-- Modal: Thêm danh mục -->
+  <div class="modal" id="modalAddCategory"
+     ng-style="{'display': vm.isModalOpen ? 'flex' : 'none'}">
+
+
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Thêm danh mục</h2>
+        <button class="modal-close" type="button" ng-click="vm.dongModalThem()">&times;</button>
+      </div>
+
+      <form class="modal-form" ng-submit="vm.taoDanhMuc()">
+        <div class="form-group">
+          <label>Tên danh mục</label>
+          <input type="text" id="tenDanhMuc" placeholder="Vd: Ăn uống" ng-model="vm.form.tenDanhMuc" required>
+        </div>
+
+        <div class="form-group">
+          <label>Loại</label>
+          <select id="loaiDanhMuc" ng-model="vm.form.loai" required>
+            <option value="">-- Chọn loại --</option>
+            <option value="THU">THU</option>
+            <option value="CHI">CHI</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Ghi chú</label>
+          <input type="text" id="ghiChu" placeholder="Vd: Ăn uống hàng ngày" ng-model="vm.form.ghiChu">
+        </div>
+
+        <div class="form-group">
+          <label>Icon</label>
+          <input type="text" id="icon" placeholder="Vd: 🍽️" ng-model="vm.form.icon">
+        </div>
+
+        <div class="modal-actions">
+          <button type="submit" class="btn btn-primary">Tạo danh mục</button>
+          <button type="button" class="btn btn-outline modal-cancel" ng-click="vm.dongModalThem()">Hủy</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- DÙNG FILE LOCAL (đúng như thư mục của bạn) -->
+  <script src="./angular.min.js"></script>
+  <script src="./categories.app.js"></script>
+
+</body>
+
+</html>
