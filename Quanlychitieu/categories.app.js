@@ -1,11 +1,30 @@
 (function () {
   "use strict";
 
-  // ✅ base API
-  var apiBase = "https://localhost:44308/api";
+  // ✅ GỌI QUA API GATEWAY (Ocelot)
+  // Gateway đang chạy: http://localhost:7001
+  // Route WalletBudget trên Gateway: /walletbudget/{everything}
+  // => API base: http://localhost:7001/walletbudget/api
+  var apiBase = "http://localhost:7001/walletbudget/api";
 
   angular
     .module("walletApp", [])
+
+    // (Tuỳ chọn) Nếu bạn có JWT token sau login thì tự gắn Bearer cho mọi request
+    .config(function ($httpProvider) {
+      $httpProvider.interceptors.push(function () {
+        return {
+          request: function (config) {
+            var token = localStorage.getItem("token"); // nếu bạn lưu token
+            if (token) {
+              config.headers.Authorization = "Bearer " + token;
+            }
+            return config;
+          }
+        };
+      });
+    })
+
     .factory("CategoriesApi", function ($http) {
       var base = apiBase + "/categories";
 
@@ -15,7 +34,7 @@
             params: {
               taiKhoanId: taiKhoanId,
               loai: loai || null,
-              status: status || "Hoạt động",     // ✅
+              status: status || "Hoạt động",
               includeDeleted: !!includeDeleted
             }
           });
@@ -25,6 +44,7 @@
         }
       };
     })
+
     .controller("CategoriesCtrl", function (CategoriesApi) {
       var vm = this;
 
@@ -80,7 +100,9 @@
           tenDanhMuc: vm.form.tenDanhMuc,
           loai: vm.form.loai,
           icon: vm.form.icon,
-          mauSac: (vm.form.mauSac && vm.form.mauSac.trim()) ? vm.form.mauSac.trim() : mauSacMacDinh(vm.form.loai),
+          mauSac: (vm.form.mauSac && vm.form.mauSac.trim())
+            ? vm.form.mauSac.trim()
+            : mauSacMacDinh(vm.form.loai),
           ghiChu: vm.form.ghiChu,
           trangThai: "Hoạt động"
         };
