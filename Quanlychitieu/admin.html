@@ -703,7 +703,7 @@
                         <div class="topbar-bell">🔔</div>
                         <div class="topbar-avatar">
                             <img src="https://via.placeholder.com/40" alt="Admin">
-                            <span>Admin</span>
+                            <span><span id="adminName">Admin</span>
                         </div>
                     </div>
                 </div>
@@ -937,3 +937,25 @@
                                         <th>Danh mục</th>
                                         <th>Ví</th>
                                         <th>Số tiền</th>
+
+    <script src="auth-client.js"></script>
+    <script>
+      (function(){
+        // Chỉ Admin mới vào được trang này
+        if(!AUTH.requireRole("Admin", "dangnhap.html")) return;
+        var u = AUTH.getUser();
+        var name = (u && (u.hoTen || u.HoTen || u.tenDangNhap || u.TenDangNhap)) ? (u.hoTen || u.HoTen || u.tenDangNhap || u.TenDangNhap) : "Admin";
+        var nameEl = document.getElementById("adminName");
+        if(nameEl) nameEl.textContent = name;
+        var btn = document.getElementById("btnLogout");
+        if(btn){
+          btn.addEventListener("click", function(e){
+            e.preventDefault();
+            AUTH.clearSession();
+            window.location.href = "index.html";
+          });
+        }
+      })();
+    </script>
+</body>
+</html>
