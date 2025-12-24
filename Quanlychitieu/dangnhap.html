@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập - QL Ngân Quỹ</title>
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <div class="logo">📊</div>
+                <h1>QL Ngân Quỹ</h1>
+                <p>Quản lý chi tiêu cá nhân thông minh</p>
+            </div>
+            
+            <div id="loginMessage" style="display:none; margin: 0 0 14px; padding: 10px 12px; border-radius: 10px;"></div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="tenDangNhap">Tên đăng nhập</label>
+                    <input 
+                        type="text" 
+                        id="tenDangNhap" 
+                        name="tenDangNhap" 
+                        placeholder="Nhập tên đăng nhập"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="matKhau">Mật khẩu</label>
+                    <input 
+                        type="password" 
+                        id="matKhau" 
+                        name="matKhau" 
+                        placeholder="Nhập mật khẩu"
+                        required
+                    >
+                </div>
+
+                <div class="form-remember">
+                    <label>
+                        <input type="checkbox" id="ghinhoPass" name="ghinhoPass">
+                        Ghi nhớ đăng nhập
+                    </label>
+                    <a href="#" class="forgot-password">Quên mật khẩu?</a>
+                </div>
+
+                <button type="submit" class="btn-submit">Đăng Nhập</button>
+            </form>
+
+            <div class="login-footer">
+                Chưa có tài khoản? <a href="dangky.html">Đăng ký ngay</a>
+            </div>
+        </div>
+    </div>
+    <script src="auth-client.js"></script>
+    <script>
+      (function(){
+        // Nếu đã đăng nhập rồi thì chuyển thẳng theo role
+        if (AUTH.getToken() && AUTH.getUser()) {
+          window.location.href = AUTH.redirectAfterLogin(AUTH.getUser());
+          return;
+        }
+        var form = document.getElementById("loginForm");
+        var msg = document.getElementById("loginMessage");
+        function showMsg(text, ok){
+          if(!msg) return;
+          msg.style.display = "block";
+          msg.style.background = ok ? "rgba(16,185,129,0.12)" : "rgba(239,68,68,0.12)";
+          msg.style.color = ok ? "#065f46" : "#7f1d1d";
+          msg.style.border = ok ? "1px solid rgba(16,185,129,0.25)" : "1px solid rgba(239,68,68,0.25)";
+          msg.textContent = text;
+        }
+        if(form){
+          form.addEventListener("submit", async function(e){
+            e.preventDefault();
+            var tenDangNhap = document.getElementById("tenDangNhap").value.trim();
+            var matKhau = document.getElementById("matKhau").value;
+            var remember = !!document.getElementById("ghinhoPass").checked;
+            try{
+              showMsg("Đang đăng nhập...", true);
+              var data = await AUTH.login(tenDangNhap, matKhau, remember);
+              showMsg("Đăng nhập thành công! Đang chuyển trang...", true);
+              window.location.href = AUTH.redirectAfterLogin(data.user);
+            }catch(err){
+              showMsg(err.message || "Đăng nhập thất bại", false);
+            }
+          });
+        }
+      })();
+    </script>
+</body>
+</html>
