@@ -17,15 +17,23 @@
                 <input type="text" placeholder="Tìm kiếm giao dịch...">
             </div>
             <div class="header-right">
-                <div class="avatar-dropdown">
+                <!-- Guest (chưa đăng nhập) -->
+                <div id="guestActions" style="display:none; gap:10px; align-items:center;">
+                    <a href="dangnhap.html" class="btn btn-outline btn-sm">Đăng nhập</a>
+                    <a href="dangky.html" class="btn btn-primary btn-sm">Đăng ký</a>
+                </div>
+
+                <!-- User (đã đăng nhập) -->
+                <div class="avatar-dropdown" id="userActions" style="display:none;">
                     <img src="https://via.placeholder.com/40" alt="Avatar" class="avatar-img">
-                    <span class="user-name">Trần Văn A</span>
+                    <span class="user-name" id="headerUserName">Người dùng</span>
                     <div class="dropdown-menu">
                         <a href="#" class="dropdown-item">Hồ sơ</a>
                         <a href="#" class="dropdown-item">Đổi mật khẩu</a>
                         <a href="#" class="dropdown-item" id="btnLogoutUser">Đăng xuất</a>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </header>
@@ -495,5 +503,33 @@
             </form>
         </div>
     </div>
+    <script src="auth-client.js"></script>
+    <script>
+      (function(){
+        var guest = document.getElementById("guestActions");
+        var userBox = document.getElementById("userActions");
+        var nameEl = document.getElementById("headerUserName");
+        var btnLogout = document.getElementById("btnLogoutUser");
+        var user = window.AUTH && AUTH.getUser ? AUTH.getUser() : null;
+        var token = window.AUTH && AUTH.getToken ? AUTH.getToken() : null;
+        if(token && user){
+          if(guest) guest.style.display = "none";
+          if(userBox) userBox.style.display = "flex";
+          if(nameEl) nameEl.textContent = (user.hoTen || user.HoTen || user.tenDangNhap || user.TenDangNhap || "Người dùng");
+        }else{
+          if(userBox) userBox.style.display = "none";
+          if(guest) guest.style.display = "flex";
+        }
+        if(btnLogout){
+          btnLogout.addEventListener("click", function(e){
+            e.preventDefault();
+            AUTH.clearSession();
+            window.location.href = "index.html";
+          });
+        }
+      })();
+    </script>
 </body>
 </html>
+
+
