@@ -10,6 +10,9 @@ builder.Services.AddOcelot();
 // CORS (nếu FE gọi gateway)
 builder.Services.AddCors(opt =>
 {
+
+
+
     opt.AddPolicy("GW", p => p
         .AllowAnyOrigin()
         .AllowAnyHeader()
