@@ -68,6 +68,48 @@
         return so.toLocaleString("vi-VN");
       };
 
+
+      // ====== TINH SO DU HIEN TAI (KHONG CAN THEM COT DB) ======
+      function unwrapList(data) {
+        if (Array.isArray(data)) return data;
+        if (!data) return [];
+        // hỗ trợ nhiều kiểu trả về: items/Items/data/Data/result/results/value/records...
+        return data.items || data.Items || data.data || data.Data ||
+               data.result || data.results || data.value || data.records ||
+               (data.payload && (data.payload.items || data.payload.data)) ||
+               [];
+      }
+
+      function apDungSoDuHienTai(danhSachVi, danhSachGiaoDich) {
+        danhSachVi = danhSachVi || [];
+        danhSachGiaoDich = danhSachGiaoDich || [];
+
+        var mapDelta = {}; // viId -> tong (THU - CHI)
+
+        for (var i = 0; i < danhSachGiaoDich.length; i++) {
+          var gd = danhSachGiaoDich[i] || {};
+          var viId = Number(gd.viId || gd.ViId || gd.walletId || gd.WalletId || 0);
+          if (!viId) continue;
+
+          var loai = String(gd.loaiGD || gd.LoaiGD || gd.loai || gd.Loai || "").toUpperCase();
+          var soTien = Number(gd.soTien || gd.SoTien || 0);
+          if (!soTien) continue;
+
+          var delta = 0;
+          if (loai === "THU") delta = soTien;
+          else if (loai === "CHI") delta = -soTien;
+
+          mapDelta[viId] = (mapDelta[viId] || 0) + delta;
+        }
+
+        for (var j = 0; j < danhSachVi.length; j++) {
+          var v = danhSachVi[j] || {};
+          var id = Number(v.id || v.Id || 0);
+          var base = Number(v.soDuBanDau || v.SoDuBanDau || 0);
+          v.soDuHienTai = base + (mapDelta[id] || 0);
+        }
+      }
+
       $scope.locTimKiemVi = function (vi) {
         if (!$scope.tuKhoaTim) return true;
         var t = ($scope.tuKhoaTim || "").toLowerCase();
@@ -131,9 +173,29 @@
             $scope.danhSachDanhMucThu = [];
           });
 
-        Promise.all([p1, p2].map(chuyenPromiseAngular))
+
+        // ✅ Lấy giao dịch để tính số dư hiện tại cho từng ví (THU - CHI)
+        // Không cần thêm cột SoDuHienTai trong DB.
+        var p3 = (WalletBudgetApi.layDanhSachGiaoDich ? WalletBudgetApi.layDanhSachGiaoDich({
+          taiKhoanId: $scope.taiKhoanId,
+          page: 1,
+          pageSize: 10000,
+          sort: "NgayGD_desc",
+          includeDeleted: false
+        }) : Promise.reject({ message: "WalletBudgetApi.chuaCoLayDanhSachGiaoDich" }))
+          .then(function (data) {
+            $scope.__giaoDichTaiVi = unwrapList(data);
+          })
+          .catch(function () {
+            $scope.__giaoDichTaiVi = [];
+          });
+
+        Promise.all([p1, p2, p3].map(chuyenPromiseAngular))
           .then(function () {
             $scope.dangTai = false;
+
+            // ✅ áp dụng số dư hiện tại cho ví (SoDuBanDau + THU - CHI)
+            apDungSoDuHienTai($scope.danhSachVi, $scope.__giaoDichTaiVi);
 
             // set default danhMucId neu co
             if ($scope.danhSachDanhMucThu.length > 0 && !$scope.formNapTien.danhMucId) {

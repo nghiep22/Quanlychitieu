@@ -105,6 +105,43 @@
       return goiNhieuEndpoint(urls, { method: "POST", data: payload });
     }
 
+
+    // ========= GIAO DICH (LIST) =========
+    function layDanhSachGiaoDich(params) {
+      // params: { taiKhoanId, from, to, viId, danhMucId, loai, q, page, pageSize, sort, includeDeleted }
+      params = params || {};
+      var taiKhoanId = params.taiKhoanId;
+
+      // build querystring
+      var qs = [];
+      function add(k, v) {
+        if (v === undefined || v === null || v === "") return;
+        qs.push(encodeURIComponent(k) + "=" + encodeURIComponent(v));
+      }
+
+      add("taiKhoanId", taiKhoanId);
+      add("from", params.from);
+      add("to", params.to);
+      add("viId", params.viId);
+      add("danhMucId", params.danhMucId);
+      add("loai", params.loai);
+      add("q", params.q);
+
+      add("page", params.page || 1);
+      add("pageSize", params.pageSize || 1000);
+      add("sort", params.sort || "NgayGD_desc");
+      add("includeDeleted", params.includeDeleted ? "true" : "false");
+
+      var query = qs.length ? ("?" + qs.join("&")) : "";
+
+      var urls = [
+        WALLET_API_BASE + "/transactions" + query,
+        WALLET_API_BASE + "/giaodich" + query,
+        WALLET_API_BASE + "/transaction" + query
+      ];
+      return goiNhieuEndpoint(urls, { method: "GET" });
+    }
+
     // ========= CHUYEN TIEN =========
     function chuyenTien(payload) {
       // payload: { taiKhoanId, viNguonId, viDichId, soTien, ngay:'YYYY-MM-DD', ghiChu }
@@ -124,6 +161,7 @@
       xoaVi: xoaVi,
       layDanhMucThu: layDanhMucThu,
       taoGiaoDich: taoGiaoDich,
+      layDanhSachGiaoDich: layDanhSachGiaoDich,
       chuyenTien: chuyenTien
     };
   });
