@@ -8,21 +8,20 @@ using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 1. Đăng ký DAL ADO.NET (truyền connection string)
+// DAL
 builder.Services.AddTransient<TaiKhoan_DAL>(sp =>
 {
     var connStr = builder.Configuration.GetConnectionString("DefaultConnection")!;
     return new TaiKhoan_DAL(connStr);
 });
 
-// 2. Đăng ký BLL
+// BLL
 builder.Services.AddScoped<ITaiKhoan_BLL, TaiKhoan_BLL>();
 
-// 3. JWT settings + service
+// JWT
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("Jwt"));
 builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 
-// 4. Cấu hình Authentication JWT
 var jwtSection = builder.Configuration.GetSection("Jwt");
 var key = Encoding.UTF8.GetBytes(jwtSection["Key"]!);
 
@@ -55,14 +54,21 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        // ✅ relative để mở swagger qua gateway: /login/swagger/index.html
+        c.SwaggerEndpoint("v1/swagger.json", "API_Login v1");
+    });
 }
 
-app.UseHttpsRedirection();
+// ✅ CHỈ redirect khi production (đỡ phá gateway khi dev)
+if (!app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
 
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
 app.Run();

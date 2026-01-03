@@ -102,5 +102,7 @@ namespace API_WalletBudget.Controllers
             }
             catch (ArgumentException ex) { return BadRequest(new { message = ex.Message }); }
         }
+
+
     }
 }

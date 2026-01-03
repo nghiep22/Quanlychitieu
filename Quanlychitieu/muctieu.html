@@ -5,18 +5,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>QL Ngân Quỹ - Mục tiêu</title>
   <link rel="stylesheet" href="index.css">
+  <style>
+    .modal {
+      display: none; 
+      position: fixed; 
+      z-index: 1000; 
+      left: 0; top: 0; 
+      width: 100%; height: 100%; 
+      background: rgba(0,0,0,0.5);
+      align-items: center;
+      justify-content: center;
+    }
+    .modal.active { display: flex; }
+    .modal-content {
+      background: #fff; 
+      padding: 25px; 
+      border-radius: 8px; 
+      width: 450px; 
+      max-width: 90%;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .form-group { margin-bottom: 15px; }
+    .form-group label { display: block; margin-bottom: 5px; font-weight: 600; color: #1e293b; }
+    .form-input {
+      width: 100%; 
+      padding: 10px; 
+      border: 1px solid #cbd5e1; 
+      border-radius: 6px; 
+      font-size: 14px;
+    }
+    .modal-footer {
+      display: flex; 
+      justify-content: flex-end; 
+      gap: 10px; 
+      margin-top: 20px;
+    }
+    .badge.success {
+      background-color: #dcfce7;
+      color: #166534;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+  </style>
 </head>
-<body>
+<body ng-app="walletApp">
   <header class="header">
     <div class="header-container">
       <div class="logo"><h1>QL Ngân Quỹ</h1></div>
       <div class="header-search">
-        <input type="text" placeholder="Tìm kiếm mục tiêu...">
+        <input type="text" ng-model="vm.searchText" placeholder="Tìm kiếm mục tiêu...">
       </div>
       <div class="header-right">
         <div class="avatar-dropdown">
           <img src="https://via.placeholder.com/40" alt="Avatar" class="avatar-img">
-          <span class="user-name">Trần Văn A</span>
+          <span class="user-name">{{vm.tenNguoiDung}}</span>
           <div class="dropdown-menu">
             <a href="#" class="dropdown-item">Hồ sơ</a>
             <a href="#" class="dropdown-item">Đổi mật khẩu</a>
@@ -38,43 +81,88 @@
     </div>
   </nav>
 
-  <main class="container">
+  <main class="container" ng-controller="MucTieuCtrl as vm">
     <div class="grid">
       <div class="left">
         <div class="card">
           <div class="card-header">
             <h2>Mục tiêu tiết kiệm</h2>
-            <button class="btn btn-primary" id="btnAddGoal">+ Tạo mục tiêu</button>
+            <button class="btn btn-primary" ng-click="vm.moModalThem()">+ Tạo mục tiêu</button>
           </div>
 
-          <div class="goal-list">
-            <div class="goal-item">
-              <div class="goal-header">
-                <span class="goal-name">Du lịch Nhật Bản</span>
-                <span class="goal-deadline">Hạn: 06/2025</span>
-              </div>
-              <div class="goal-progress">
-                <div class="progress">
-                  <div class="progress-bar" style="width: 65%;"></div>
-                </div>
-                <span class="goal-amount">65,000,000 / 100,000,000 ₫</span>
-              </div>
-              <button class="btn btn-outline btn-sm" id="btnContribute">Đóng góp</button>
-            </div>
+          <div class="table-wrap">
+            <table class="goal-table">
+              <thead>
+                <tr>
+                  <th>Tên mục tiêu</th>
+                  <th>Tiến độ</th>
+                  <th>Thời hạn</th>
+                  <th>Ghi chú</th>
+                  <th>Hành động</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-if="vm.loading">
+                  <td colspan="5" style="text-align:center; padding:20px; color:#64748b;">
+                    Đang tải danh sách mục tiêu...
+                  </td>
+                </tr>
 
-            <div class="goal-item">
-              <div class="goal-header">
-                <span class="goal-name">Mua ô tô</span>
-                <span class="goal-deadline">Hạn: 12/2025</span>
-              </div>
-              <div class="goal-progress">
-                <div class="progress">
-                  <div class="progress-bar" style="width: 42%;"></div>
-                </div>
-                <span class="goal-amount">210,000,000 / 500,000,000 ₫</span>
-              </div>
-              <button class="btn btn-outline btn-sm">Đóng góp</button>
-            </div>
+                <tr ng-if="!vm.loading && vm.danhSach.length === 0">
+                  <td colspan="5" style="text-align:center; padding:30px; color:#64748b;">
+                    Chưa có mục tiêu tiết kiệm nào.<br>
+                    Nhấn nút <strong>+ Tạo mục tiêu</strong> để bắt đầu!
+                  </td>
+                </tr>
+
+                <tr ng-repeat="goal in vm.danhSach | filter:vm.searchText track by goal.id">
+                  <td>
+                    <strong>{{goal.tenMucTieu}}</strong>
+                    <span ng-if="goal.soTienDaDat >= goal.soTienCanDat" class="badge success" style="margin-left:8px;">
+                      Hoàn thành 🎉
+                    </span>
+                  </td>
+                  <td>
+                    <div class="progress">
+                      <div class="progress-bar" 
+                           ng-style="{ 'width': (goal.soTienDaDat / goal.soTienCanDat * 100) + '%' }"
+                           ng-class="{'complete': goal.soTienDaDat >= goal.soTienCanDat}"></div>
+                    </div>
+                    <small>
+                      {{goal.soTienDaDat | number:0}} / {{goal.soTienCanDat | number:0}} ₫
+                    </small>
+                  </td>
+                  <td>{{goal.hanHoanThanh | date:'dd/MM/yyyy' || '-'}}</td>
+                  <td>{{goal.moTa || '-'}}</td>
+                  <td>
+                    <button class="btn btn-outline btn-sm"
+                            ng-click="vm.moDongGop(goal)"
+                            ng-disabled="goal.soTienDaDat >= goal.soTienCanDat">
+                      Đóng góp
+                    </button>
+                    <button class="btn btn-danger btn-sm" ng-click="vm.xoaMucTieu(goal)">
+                      Xóa
+                    </button>
+                  </td>
+                </tr>
+
+                <tr ng-if="vm.dongGopHienTai">
+                  <td colspan="5" style="padding: 16px; background:#f0f9ff; border-top: 3px solid #0ea5e9;">
+                    <div style="display:flex; flex-direction:column; gap:12px;">
+                      <div style="display:flex; align-items:center; font-weight:600; color:#1e40af;">
+                        <span>Đóng góp cho mục tiêu:</span>
+                        <strong style="margin-left:8px;">{{vm.dongGopHienTai.tenMucTieu}}</strong>
+                      </div>
+                      <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+                        <input type="number" ng-model="vm.soTienDongGop" placeholder="Nhập số tiền đóng góp (₫)" min="1" class="form-input" style="flex:1; min-width:220px;" required />
+                        <button class="btn btn-success" ng-click="vm.xacNhanDongGop()">Xác nhận</button>
+                        <button class="btn btn-outline" ng-click="vm.huyDongGop()">Hủy</button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
@@ -97,60 +185,66 @@
                   <td>2,000,000 ₫</td>
                   <td>Đóng góp tháng 12</td>
                 </tr>
-                <tr>
-                  <td>01/12/2024</td>
-                  <td>Mua ô tô</td>
-                  <td>5,000,000 ₫</td>
-                  <td>Tiết kiệm</td>
-                </tr>
               </tbody>
             </table>
           </div>
         </div>
-
       </div>
 
       <div class="right">
         <div class="card">
           <h2>Gợi ý</h2>
-          <p style="color:#64748b;">Mỗi lần đóng góp mục tiêu sẽ tạo một giao dịch (DongGopMucTieu ↔ GiaoDich).</p>
+          <p style="color:#64748b;">
+            Mỗi lần đóng góp mục tiêu sẽ tạo một giao dịch<br>
+            (DongGopMucTieu ↔ GiaoDich).
+          </p>
         </div>
+      </div>
+    </div>
+
+    <div class="modal" ng-class="{'active': vm.isModalOpen}">
+      <div class="modal-content">
+        <div class="modal-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+          <h2 style="margin:0; font-size:1.5rem; color:#1e293b;">Tạo mục tiêu tiết kiệm</h2>
+          <button ng-click="vm.dongModal()" style="background:none; border:none; font-size:1.5rem; cursor:pointer;">&times;</button>
+        </div>
+
+        <form ng-submit="vm.submitModal()">
+          <div class="form-group">
+            <label>Tên mục tiêu</label>
+            <input type="text" ng-model="vm.form.tenMucTieu" required class="form-input" placeholder="Ví dụ: Mua iPhone 15">
+          </div>
+
+          <div class="form-group">
+            <label>Số tiền mục tiêu (₫)</label>
+            <input type="number" ng-model="vm.form.soTienCanDat" required class="form-input" placeholder="0">
+          </div>
+
+          <div class="form-group">
+            <label>Thời hạn hoàn thành</label>
+            <input type="date" ng-model="vm.form.hanHoanThanh" required class="form-input">
+          </div>
+
+          <div class="form-group">
+            <label>Ghi chú</label>
+            <textarea ng-model="vm.form.moTa" class="form-input" rows="3" placeholder="Nhập ghi chú..."></textarea>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline" ng-click="vm.dongModal()">Hủy bỏ</button>
+            <button type="submit" class="btn btn-primary">Lưu mục tiêu</button>
+          </div>
+        </form>
       </div>
     </div>
   </main>
 
-  <footer class="footer"><p>&copy; 2024 QL Ngân Quỹ.</p></footer>
+  <footer class="footer">
+    <p>&copy; 2024 QL Ngân Quỹ.</p>
+  </footer>
 
-  <!-- Modal: Đóng góp mục tiêu -->
-  <div class="modal" id="modalContributeGoal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Đóng góp mục tiêu</h2>
-        <button class="modal-close">&times;</button>
-      </div>
-      <form class="modal-form">
-        <div class="form-group">
-          <label>Chọn mục tiêu</label>
-          <select id="goalId">
-            <option value="">-- Chọn mục tiêu --</option>
-            <option value="1">Du lịch Nhật Bản</option>
-            <option value="2">Mua ô tô</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Số tiền đóng góp</label>
-          <input type="number" id="contributionAmount" placeholder="Nhập số tiền" required>
-        </div>
-        <div class="form-group">
-          <label>Ghi chú</label>
-          <textarea id="contributionNote" rows="2" placeholder="Ghi chú..."></textarea>
-        </div>
-        <div class="modal-actions">
-          <button type="submit" class="btn btn-success">Đóng góp</button>
-          <button type="button" class="btn btn-outline modal-cancel">Hủy</button>
-        </div>
-      </form>
-    </div>
-  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+  <script src="auth-client.js"></script>
+  <script src="muctieu.js"></script>
 </body>
 </html>

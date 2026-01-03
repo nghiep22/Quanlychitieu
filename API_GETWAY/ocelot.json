@@ -1,0 +1,87 @@
+﻿{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/walletbudget/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ],
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44308
+        }
+      ],
+      "HttpHandlerOptions": {
+        "DangerousAcceptAnyServerCertificateValidator": true
+      },
+      "SwaggerKey": "walletbudget"
+    },
+    {
+      "UpstreamPathTemplate": "/login/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ],
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7072
+        }
+      ],
+      "HttpHandlerOptions": {
+        "DangerousAcceptAnyServerCertificateValidator": true
+      },
+      "SwaggerKey": "login"
+    },
+    {
+      "UpstreamPathTemplate": "/thongkebaocao/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ],
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44337
+        }
+      ],
+      "HttpHandlerOptions": {
+        "DangerousAcceptAnyServerCertificateValidator": true
+      },
+      "SwaggerKey": "thongkebaocao"
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "walletbudget",
+      "Config": [
+        {
+          "Name": "API_WalletBudget",
+          "Version": "v1",
+          "Url": "https://localhost:44308/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "login",
+      "Config": [
+        {
+          "Name": "API_Login",
+          "Version": "v1",
+          "Url": "https://localhost:7072/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "thongkebaocao",
+      "Config": [
+        {
+          "Name": "API_THONGKEBAOCAO",
+          "Version": "v1",
+          "Url": "https://localhost:44337/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:7166"
+  }
+}

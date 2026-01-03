@@ -406,3 +406,4 @@ SELECT TOP 50 * FROM dbo.GiaoDich ORDER BY NgayGD DESC, Id DESC;
 SELECT * FROM dbo.NganSach ORDER BY TaiKhoanId, Id;
 SELECT * FROM dbo.MucTieuTietKiem ORDER BY TaiKhoanId, Id;
 SELECT TOP 50 * FROM dbo.ThongBao ORDER BY ThoiGianGui DESC, Id DESC;
+

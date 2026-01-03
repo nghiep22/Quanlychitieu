@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="vi" ng-app="viApp">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QL Ngân Quỹ - Ví</title>
+  <link rel="stylesheet" href="index.css">
+
+  <style>
+    /* Modal đơn giản */
+    .modal-backdrop {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.45);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 9999;
+      padding: 16px;
+    }
+    .modal-box {
+      width: 100%;
+      max-width: 560px;
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    }
+    .modal-header {
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 16px;
+      border-bottom: 1px solid #eee;
+    }
+    .modal-body { padding: 16px; }
+    .modal-footer {
+      padding: 12px 16px;
+      border-top: 1px solid #eee;
+      display:flex; gap:10px; justify-content:flex-end;
+    }
+    .btn {
+      border: none;
+      padding: 10px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .btn-primary { background: #2563eb; color: #fff; }
+    .btn-outline { background: transparent; border: 1px solid #cbd5e1; }
+    .btn-danger { background: #ef4444; color: #fff; }
+    .btn-warning { background: #f59e0b; color: #111827; }
+    .muted { color: #64748b; }
+    .grid-2 { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .grid-3 { display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    @media (max-width: 720px){
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
+
+    .wallet-list {
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 980px){
+      .wallet-list { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px){
+      .wallet-list { grid-template-columns: 1fr; }
+    }
+    .wallet-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 14px;
+      background: #fff;
+    }
+    .wallet-title { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+    .wallet-name { font-weight: 800; font-size: 16px; }
+    .wallet-type { font-size: 12px; padding: 3px 8px; border-radius:999px; background:#f1f5f9; }
+    .wallet-balance { margin-top: 12px; font-size: 22px; font-weight: 900; }
+    .wallet-actions { margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; }
+    .alert {
+      margin: 12px 0;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #e5e7eb;
+      background: #f8fafc;
+    }
+    .alert-error { border-color: #fecaca; background: #fff1f2; }
+    .alert-ok { border-color: #bbf7d0; background: #f0fdf4; }
+    label { font-weight: 700; display:block; margin-bottom: 6px; }
+    input, select, textarea {
+      width:100%;
+      padding: 10px 12px;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      outline: none;
+    }
+    textarea { min-height: 90px; resize: vertical; }
+    .topbar-actions { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+  </style>
+</head>
+
+<body ng-controller="ViCtrl">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">
+        <h1>QL Ngân Quỹ</h1>
+      </div>
+
+      <div class="header-search">
+        <input type="text" placeholder="Tìm kiếm ngân sách..." ng-model="vm.filter.keyword">
+      </div>
+
+      <div class="header-right">
+        <div class="avatar-dropdown">
+          <img src="https://via.placeholder.com/40" class="avatar-img">
+          <span class="user-name">{{ vm.tenNguoiDung }}</span>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item">Hồ sơ</a>
+            <a href="#" class="dropdown-item" id="btnLogoutUser">Đăng xuất</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-item">Tổng quan</a>
+      <a href="giaodich.html" class="nav-item">Giao dịch</a>
+      <a href="vi.html" class="nav-item active">Ví</a>
+      <a href="ngansach.html" class="nav-item">Ngân sách</a>
+      <a href="muctieu.html" class="nav-item">Mục tiêu</a>
+      <a href="danhmuc.html" class="nav-item">Danh mục</a>
+      <a href="admin.html" class="nav-item" ng-if="(currentUser.quyen||'').toLowerCase()==='admin'">Admin</a>
+    </div>
+  </nav>
+
+  <main style="padding:16px; max-width: 1200px; margin: 0 auto;">
+    <div class="card" style="padding:16px;">
+      <div class="wallet-title">
+        <div>
+          <h2 style="margin:0;">Ví của bạn</h2>
+          <div class="muted" style="margin-top:4px;">
+            User ID: <b>{{taiKhoanId}}</b>
+          </div>
+        </div>
+
+        <div class="topbar-actions">
+          <button class="btn btn-outline" ng-click="taiLai()">Tải lại</button>
+          <button class="btn btn-primary" ng-click="moModalTaoVi()">+ Thêm ví</button>
+        </div>
+      </div>
+
+      <div class="alert" ng-if="dangTai">Đang tải dữ liệu...</div>
+
+      <div class="alert alert-error" ng-if="thongBaoLoi">{{thongBaoLoi}}</div>
+      <div class="alert alert-ok" ng-if="thongBaoOk">{{thongBaoOk}}</div>
+
+      <div class="wallet-list" style="margin-top:14px;">
+        <div class="wallet-card" ng-repeat="vi in danhSachVi | filter:locTimKiemVi track by vi.id">
+          <div class="wallet-title">
+            <div class="wallet-name">{{vi.tenVi || ('Ví #' + vi.id)}}</div>
+            <div class="wallet-type">{{vi.loaiVi || 'Khác'}} • {{vi.trangThai || 'Hoạt động'}}</div>
+          </div>
+
+          <div class="muted" style="margin-top:6px;">ID: {{vi.id}}</div>
+
+          <div class="wallet-balance">
+            {{dinhDangTien(vi.soDuHienTai || vi.soDuBanDau || 0)}} ₫
+          </div>
+
+          <div class="muted" style="margin-top:6px;">
+            Số dư ban đầu: {{dinhDangTien(vi.soDuBanDau || 0)}} ₫
+          </div>
+
+          <div class="wallet-actions">
+            <button class="btn btn-outline" ng-click="moModalNapTien(vi)">Nạp tiền</button>
+            <button class="btn btn-outline" ng-click="moModalSuaVi(vi)">Sửa</button>
+            <button class="btn btn-warning" ng-click="khoaMoVi(vi)">
+              {{(vi.trangThai||'').toLowerCase()==='khóa' ? 'Mở khóa' : 'Khóa'}}
+            </button>
+            <button class="btn btn-danger" ng-click="xoaVi(vi)">Xóa</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHUYỂN TIỀN -->
+      <div class="card" style="margin-top: 16px; padding: 16px;">
+        <h3 style="margin:0;">Chuyển tiền giữa các ví</h3>
+        <div class="muted" style="margin-top:6px;">Chọn ví nguồn, ví đích và số tiền.</div>
+
+        <div class="grid-3" style="margin-top: 12px;">
+          <div>
+            <label>Ví nguồn</label>
+            <select ng-model="formChuyenTien.viNguonId"
+                    ng-options="v.id as (v.tenVi + ' (ID ' + v.id + ')') for v in danhSachVi">
+              <option value="">-- Chọn ví nguồn --</option>
+            </select>
+          </div>
+          <div>
+            <label>Ví đích</label>
+            <select ng-model="formChuyenTien.viDichId"
+                    ng-options="v.id as (v.tenVi + ' (ID ' + v.id + ')') for v in danhSachVi">
+              <option value="">-- Chọn ví đích --</option>
+            </select>
+          </div>
+          <div>
+            <label>Số tiền</label>
+            <input type="number" min="1" ng-model="formChuyenTien.soTien" placeholder="VD: 200000">
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top: 12px;">
+          <div>
+            <label>Ngày chuyển</label>
+            <input type="date" ng-model="formChuyenTien.ngay">
+          </div>
+          <div>
+            <label>Ghi chú</label>
+            <input type="text" ng-model="formChuyenTien.ghiChu" placeholder="VD: Chuyển tiền sang ví khác">
+          </div>
+        </div>
+
+        <div style="margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn btn-outline" ng-click="resetChuyenTien()">Reset</button>
+          <button class="btn btn-primary" ng-click="chuyenTien()">Chuyển tiền</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- MODAL: TẠO VÍ -->
+  <div class="modal-backdrop" ng-if="modalTaoVi">
+    <div class="modal-box">
+      <div class="modal-header">
+        <b>Thêm ví mới</b>
+        <button class="btn btn-outline" ng-click="dongModalTaoVi()">X</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="grid-2">
+          <div>
+            <label>Tên ví</label>
+            <input type="text" ng-model="formTaoVi.tenVi" placeholder="VD: Tiền mặt">
+          </div>
+          <div>
+            <label>Loại ví</label>
+            <select ng-model="formTaoVi.loaiVi">
+              <option value="">-- Chọn loại ví --</option>
+              <option value="Tiền mặt">Tiền mặt</option>
+              <option value="Ngân hàng">Ngân hàng</option>
+              <option value="Ví điện tử">Ví điện tử</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top:12px;">
+          <div>
+            <label>Số dư ban đầu</label>
+            <input type="number" ng-model="formTaoVi.soDuBanDau" min="0" placeholder="VD: 500000">
+          </div>
+          <div>
+            <label>Ghi chú</label>
+            <input type="text" ng-model="formTaoVi.ghiChu" placeholder="VD: Ví tiền mặt hàng ngày">
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-outline" ng-click="dongModalTaoVi()">Hủy</button>
+        <button class="btn btn-primary" ng-click="taoVi()">Tạo ví</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: SỬA VÍ -->
+  <div class="modal-backdrop" ng-if="modalSuaVi">
+    <div class="modal-box">
+      <div class="modal-header">
+        <b>Sửa ví: {{viDangSua.tenVi}} (ID {{viDangSua.id}})</b>
+        <button class="btn btn-outline" ng-click="dongModalSuaVi()">X</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="grid-2">
+          <div>
+            <label>Tên ví</label>
+            <input type="text" ng-model="formSuaVi.tenVi" placeholder="VD: Tiền mặt">
+          </div>
+          <div>
+            <label>Loại ví</label>
+            <select ng-model="formSuaVi.loaiVi">
+              <option value="">-- Chọn loại ví --</option>
+              <option value="Tiền mặt">Tiền mặt</option>
+              <option value="Ngân hàng">Ngân hàng</option>
+              <option value="Ví điện tử">Ví điện tử</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top:12px;">
+          <div>
+            <label>Số dư ban đầu</label>
+            <input type="number" ng-model="formSuaVi.soDuBanDau" min="0">
+          </div>
+          <div>
+            <label>Ghi chú</label>
+            <input type="text" ng-model="formSuaVi.ghiChu">
+          </div>
+        </div>
+
+        <div class="muted" style="margin-top:10px;">
+          * Số dư hiện tại = Số dư ban đầu + Tổng THU - Tổng CHI (tính theo giao dịch).
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-outline" ng-click="dongModalSuaVi()">Hủy</button>
+        <button class="btn btn-primary" ng-click="suaVi()">Lưu</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: NẠP TIỀN -->
+  <div class="modal-backdrop" ng-if="modalNapTien">
+    <div class="modal-box">
+      <div class="modal-header">
+        <b>Nạp tiền vào: {{viDangNap.tenVi}} (ID {{viDangNap.id}})</b>
+        <button class="btn btn-outline" ng-click="dongModalNapTien()">X</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="grid-2">
+          <div>
+            <label>Số tiền nạp</label>
+            <input type="number" ng-model="formNapTien.soTien" placeholder="VD: 300000" min="1">
+          </div>
+          <div>
+            <label>Ngày giao dịch</label>
+            <input type="date" ng-model="formNapTien.ngayGD">
+          </div>
+        </div>
+
+        <div style="margin-top:12px;">
+          <label>Danh mục (THU)</label>
+          <select ng-model="formNapTien.danhMucId"
+                  ng-options="dm.id as (dm.tenDanhMuc + ' (ID ' + dm.id + ')') for dm in danhSachDanhMucThu">
+            <option value="">-- Chọn danh mục THU --</option>
+          </select>
+          <div class="muted" style="margin-top:6px;">
+            Nếu danh sách trống: bạn cần tạo danh mục THU trong trang Danh mục.
+          </div>
+        </div>
+
+        <div style="margin-top:12px;">
+          <label>Ghi chú</label>
+          <textarea ng-model="formNapTien.ghiChu" placeholder="VD: Nạp tiền vào ví"></textarea>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-outline" ng-click="dongModalNapTien()">Hủy</button>
+        <button class="btn btn-primary" ng-click="napTien()">Xác nhận nạp</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="angular.min.js"></script>
+  <script src="auth-client.js"></script>
+
+  <!-- PHẢI load app trước để tạo module viApp -->
+  <script src="vi.app.js"></script>
+
+  <!-- Sau đó mới load client api -->
+  <script src="walletbudget-client.js"></script>
+</body>
+</html>

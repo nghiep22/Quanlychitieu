@@ -137,4 +137,39 @@ WHERE Id=@id AND TaiKhoanId=@uid AND DaXoa=0;";
         await cn.OpenAsync();
         return await cmd.ExecuteNonQueryAsync() > 0;
     }
+
+    public List<NganSach> GetByTaiKhoan(int taiKhoanId)
+    {
+        var list = new List<NganSach>();
+
+        using var cn = new SqlConnection(_cs);
+        using var cmd = new SqlCommand(@"
+            SELECT ns.*, dm.TenDanhMuc
+            FROM NganSach ns
+            JOIN DanhMuc dm ON ns.DanhMucId = dm.Id
+            WHERE ns.TaiKhoanId = @TaiKhoanId
+              AND ns.DaXoa = 0
+        ", cn);
+
+        cmd.Parameters.AddWithValue("@TaiKhoanId", taiKhoanId);
+        cn.Open();
+
+        using var rd = cmd.ExecuteReader();
+        while (rd.Read())
+        {
+            list.Add(new NganSach
+            {
+                Id = (int)rd["Id"],
+                TaiKhoanId = (int)rd["TaiKhoanId"],
+                DanhMucId = (int)rd["DanhMucId"],
+                SoTienGioiHan = (decimal)rd["SoTienGioiHan"],
+                TGBatDau = (DateTime)rd["TGBatDau"],
+                TGKetThuc = (DateTime)rd["TGKetThuc"],
+                TrangThai = rd["TrangThai"].ToString()!,
+                GhiChu = rd["GhiChu"] as string
+            });
+        }
+
+        return list;
+    }
 }

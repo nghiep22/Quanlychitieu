@@ -1,25 +1,31 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" ng-app="walletApp">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>QL Ngân Quỹ - Ngân sách</title>
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="index.css" />
 </head>
-<body>
+
+<body ng-controller="NganSachCtrl as vm">
+
+  <!-- Header -->
   <header class="header">
     <div class="header-container">
-      <div class="logo"><h1>QL Ngân Quỹ</h1></div>
-      <div class="header-search">
-        <input type="text" placeholder="Tìm kiếm ngân sách...">
+      <div class="logo">
+        <h1>QL Ngân Quỹ</h1>
       </div>
+
+      <div class="header-search">
+        <input type="text" placeholder="Tìm kiếm ngân sách..." ng-model="vm.filter.keyword">
+      </div>
+
       <div class="header-right">
         <div class="avatar-dropdown">
-          <img src="https://via.placeholder.com/40" alt="Avatar" class="avatar-img">
-          <span class="user-name">Trần Văn A</span>
+          <img src="https://via.placeholder.com/40" class="avatar-img">
+          <span class="user-name">{{ vm.tenNguoiDung }}</span>
           <div class="dropdown-menu">
             <a href="#" class="dropdown-item">Hồ sơ</a>
-            <a href="#" class="dropdown-item">Đổi mật khẩu</a>
             <a href="#" class="dropdown-item" id="btnLogoutUser">Đăng xuất</a>
           </div>
         </div>
@@ -27,6 +33,7 @@
     </div>
   </header>
 
+  <!-- Navbar -->
   <nav class="nav">
     <div class="nav-container">
       <a href="index.html" class="nav-item">Tổng quan</a>
@@ -38,64 +45,57 @@
     </div>
   </nav>
 
+  <!-- Main -->
   <main class="container">
     <div class="grid">
+
+      <!-- LEFT -->
       <div class="left">
         <div class="card">
           <div class="card-header">
-            <h2>Ngân sách theo danh mục</h2>
-            <button class="btn btn-primary" id="btnAddBudget">+ Tạo ngân sách</button>
+            <h2>Danh sách ngân sách</h2>
+            <button class="btn btn-primary" ng-click="vm.moModalThem()">+ Thêm ngân sách</button>
           </div>
 
-          <div class="budget-list">
-            <div class="budget-item">
-              <div class="budget-header">
-                <span class="budget-name">Ăn uống</span>
-                <span class="budget-used">3,500,000 / 5,000,000 ₫</span>
-              </div>
-              <div class="progress"><div class="progress-bar" style="width:70%"></div></div>
-            </div>
-
-            <div class="budget-item">
-              <div class="budget-header">
-                <span class="budget-name">Giao thông</span>
-                <span class="budget-used">450,000 / 1,000,000 ₫</span>
-              </div>
-              <div class="progress"><div class="progress-bar" style="width:45%"></div></div>
-            </div>
-
-            <div class="budget-item">
-              <div class="budget-header">
-                <span class="budget-name">Mua sắm</span>
-                <span class="budget-used">2,100,000 / 2,000,000 ₫</span>
-              </div>
-              <div class="progress"><div class="progress-bar warning" style="width:105%"></div></div>
-              <div class="alert-warning">⚠️ Vượt ngân sách</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <h2>Lịch sử cảnh báo</h2>
-          <div class="table-wrap">
+          <div style="overflow:auto;">
             <table>
               <thead>
                 <tr>
-                  <th>Thời gian</th>
+                  <th>STT</th>
                   <th>Danh mục</th>
-                  <th>Nội dung</th>
+                  <th>Số tiền</th>
+                  <th>Từ ngày</th>
+                  <th>Đến ngày</th>
+                  <th>Ghi chú</th>
+                  <th>Hành động</th>
                 </tr>
               </thead>
+
               <tbody>
-                <tr>
-                  <td>12/12/2024 10:30</td>
-                  <td>Mua sắm</td>
-                  <td>Vượt ngân sách 5%</td>
+                <tr ng-repeat="ns in (vm.danhSach | filter:vm.filter.keyword) track by $index">
+                  <td>{{$index + 1}}</td>
+                  <td>{{ vm.layTenDanhMuc(ns.danhMucId) }}</td>
+                  <td>{{ ns.soTienGioiHan | currency:"":0 }} ₫</td>
+                  <td>{{ ns.tgBatDau | date:'dd/MM/yyyy' }}</td>
+                  <td>{{ ns.tgKetThuc | date:'dd/MM/yyyy' }}</td>
+                  <td>{{ ns.ghiChu }}</td>
+                  <td>
+                    <button class="btn btn-outline btn-sm" ng-click="vm.moModalXem(ns)">Xem</button>
+                    <button class="btn btn-primary btn-sm" ng-click="vm.moModalSua(ns)">Sửa</button>
+                    <button class="btn btn-outline btn-sm"
+                            style="border-color:#ef4444;color:#ef4444"
+                            ng-click="vm.xoaNganSach(ns)">Xóa</button>
+                  </td>
                 </tr>
-                <tr>
-                  <td>10/12/2024 08:10</td>
-                  <td>Ăn uống</td>
-                  <td>Đã dùng 70% ngân sách</td>
+
+                <tr ng-if="!vm.loading && vm.danhSach.length === 0">
+                  <td colspan="8" style="text-align:center;color:#64748b;">
+                    Chưa có ngân sách
+                  </td>
+                </tr>
+
+                <tr ng-if="vm.loading">
+                  <td colspan="8" style="text-align:center;">Đang tải...</td>
                 </tr>
               </tbody>
             </table>
@@ -103,15 +103,93 @@
         </div>
       </div>
 
+      <!-- RIGHT -->
       <div class="right">
         <div class="card">
-          <h2>Mẹo</h2>
-          <p style="color:#64748b;">Bạn có thể đặt ngân sách theo tháng (TGBatDau/TGKetThuc) để theo dõi sát hơn.</p>
+          <h2>Gợi ý</h2>
+          <p>Đặt ngân sách theo từng danh mục để kiểm soát chi tiêu tốt hơn.</p>
+          <p>Tài khoản ID: <b>{{vm.taiKhoanId}}</b></p>
         </div>
       </div>
+
     </div>
   </main>
 
-  <footer class="footer"><p>&copy; 2024 QL Ngân Quỹ.</p></footer>
+  <!-- MODAL -->
+  <div class="modal" ng-style="{'display': vm.isModalOpen ? 'flex' : 'none'}">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>{{vm.modalTitle}}</h2>
+        <button class="modal-close" ng-click="vm.dongModal()">&times;</button>
+      </div>
+
+      <form class="modal-form" ng-submit="vm.submitModal()">
+
+        <!-- Danh mục -->
+        <div class="form-group">
+          <label>Danh mục</label>
+
+          <!-- VIEW -->
+          <input type="text"
+                 ng-if="vm.modalMode === 'view'"
+                 ng-value="vm.layTenDanhMuc(vm.form.danhMucId)"
+                 disabled>
+
+          <!-- CREATE / EDIT -->
+          <select ng-if="vm.modalMode !== 'view'"
+        ng-model="vm.form.danhMucId"
+        ng-options="dm.id as dm.tenDanhMuc for dm in vm.danhMucList"
+        required>
+  <option value="">-- Chọn danh mục --</option>
+</select>
+
+        </div>
+
+        <div class="form-group">
+          <label>Số tiền giới hạn</label>
+          <input type="number" ng-model="vm.form.soTienGioiHan"
+                 ng-disabled="vm.modalMode==='view'" required>
+        </div>
+
+        <div class="form-group">
+          <label>Từ ngày</label>
+          <input type="date" ng-model="vm.form.tgBatDau"
+                 ng-disabled="vm.modalMode==='view'" required>
+        </div>
+
+        <div class="form-group">
+          <label>Đến ngày</label>
+          <input type="date" ng-model="vm.form.tgKetThuc"
+                 ng-disabled="vm.modalMode==='view'" required>
+        </div>
+
+        <div class="form-group">
+          <label>Ghi chú</label>
+          <input type="text" ng-model="vm.form.ghiChu"
+                 ng-disabled="vm.modalMode==='view'">
+        </div>
+
+        <div class="modal-actions">
+          <button ng-if="vm.modalMode !== 'view'"
+                  type="submit" class="btn btn-primary">
+            {{ vm.modalMode === 'create' ? 'Tạo ngân sách' : 'Lưu thay đổi' }}
+          </button>
+
+          <button type="button" class="btn btn-outline"
+                  ng-click="vm.dongModal()">Đóng</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2024 QL Ngân Quỹ</p>
+  </footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+<script src="auth-client.js"></script>
+<script src="ngansach.js"></script>
+
 </body>
 </html>

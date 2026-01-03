@@ -2,10 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Models;
 
-namespace API_WalletBudget.Controllers
+namespace API_THONGKEBAOCAO.Controllers
 {
     [ApiController]
-    [Route("api/saving-goals")]
+    [Route("api/muctieutietkiem")]
     public class MucTieuTietKiemController : ControllerBase
     {
         private readonly IMucTieuTietKiem_BLL _bll;
