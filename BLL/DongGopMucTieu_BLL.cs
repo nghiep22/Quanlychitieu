@@ -6,58 +6,41 @@ namespace BLL
     public class DongGopMucTieu_BLL : IDongGopMucTieu_BLL
     {
         private readonly DongGopMucTieu_DAL _dal;
+        public DongGopMucTieu_BLL(DongGopMucTieu_DAL dal) => _dal = dal;
 
-        public DongGopMucTieu_BLL(DongGopMucTieu_DAL dal)
+        public async Task<int> CreateAsync(DongGopMucTieuCreateRequest req)
         {
-            _dal = dal;
-        }
+            if (req == null) throw new ArgumentException("Dữ liệu yêu cầu không được để trống");
+            if (req.MucTieuId <= 0) throw new ArgumentException("Mục tiêu không hợp lệ");
+            if (req.TaiKhoanId <= 0) throw new ArgumentException("Tài khoản không hợp lệ");
+            if (req.SoTien <= 0) throw new ArgumentException("Số tiền đóng góp phải lớn hơn 0");
 
-        private static void ValidateIds(int mucTieuId, int taiKhoanId, int giaoDichId)
-        {
-            if (mucTieuId <= 0) throw new ArgumentException("MucTieuId must be > 0");
-            if (taiKhoanId <= 0) throw new ArgumentException("TaiKhoanId must be > 0");
-            if (giaoDichId <= 0) throw new ArgumentException("GiaoDichId must be > 0");
-        }
+            // Mặc định ngày đóng góp nếu không có
+            if (req.NgayDongGop == default) req.NgayDongGop = DateTime.Now;
 
-        public Task<List<DongGopMucTieu>> GetByMucTieuAsync(int mucTieuId, bool includeDeleted)
-        {
-            if (mucTieuId <= 0) throw new ArgumentException("mucTieuId must be > 0");
-            return _dal.GetByMucTieuAsync(mucTieuId, includeDeleted);
+            return await _dal.CreateAsync(req);
         }
 
         public Task<DongGopMucTieu?> GetByIdAsync(int id, int taiKhoanId, bool includeDeleted)
         {
-            if (id <= 0) throw new ArgumentException("id must be > 0");
-            if (taiKhoanId <= 0) throw new ArgumentException("taiKhoanId must be > 0");
+            if (id <= 0 || taiKhoanId <= 0) throw new ArgumentException("Tham số không hợp lệ");
             return _dal.GetByIdAsync(id, taiKhoanId, includeDeleted);
         }
 
-        public Task<int> CreateAsync(DongGopMucTieuCreateRequest req)
+        public Task<List<DongGopMucTieu>> GetByMucTieuAsync(int mucTieuId, bool includeDeleted)
         {
-            if (req == null) throw new ArgumentException("Body is required");
-            ValidateIds(req.MucTieuId, req.TaiKhoanId, req.GiaoDichId);
-
-            if (req.SoTien <= 0) throw new ArgumentException("SoTien must be > 0");
-            if (req.NgayDongGop == default) throw new ArgumentException("NgayDongGop is required");
-
-            return _dal.CreateAsync(req);
+            if (mucTieuId <= 0) throw new ArgumentException("ID mục tiêu không hợp lệ");
+            return _dal.GetByMucTieuAsync(mucTieuId, includeDeleted);
         }
 
         public Task<bool> UpdateAsync(int id, int taiKhoanId, DongGopMucTieuUpdateRequest req)
         {
-            if (id <= 0) throw new ArgumentException("id must be > 0");
-            if (taiKhoanId <= 0) throw new ArgumentException("taiKhoanId must be > 0");
-            if (req == null) throw new ArgumentException("Body is required");
-            if (req.SoTien <= 0) throw new ArgumentException("SoTien must be > 0");
-            if (req.NgayDongGop == default) throw new ArgumentException("NgayDongGop is required");
-
+            if (id <= 0 || req.SoTien <= 0) throw new ArgumentException("Dữ liệu cập nhật không hợp lệ");
             return _dal.UpdateAsync(id, taiKhoanId, req);
         }
 
         public Task<bool> SoftDeleteAsync(int id, int taiKhoanId)
         {
-            if (id <= 0) throw new ArgumentException("id must be > 0");
-            if (taiKhoanId <= 0) throw new ArgumentException("taiKhoanId must be > 0");
             return _dal.SoftDeleteAsync(id, taiKhoanId);
         }
     }

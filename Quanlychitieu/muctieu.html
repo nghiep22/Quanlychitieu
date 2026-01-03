@@ -47,6 +47,19 @@
       border-radius: 4px;
       font-size: 12px;
     }
+    .progress {
+      background-color: #e2e8f0;
+      border-radius: 999px;
+      height: 10px;
+      overflow: hidden;
+      margin-bottom: 4px;
+      width: 100%;
+    }
+    .progress-bar {
+      background-color: #3b82f6;
+      height: 100%;
+      transition: width 0.3s ease;
+    }
   </style>
 </head>
 <body ng-app="walletApp">
@@ -95,7 +108,7 @@
               <thead>
                 <tr>
                   <th>Tên mục tiêu</th>
-                  <th>Tiến độ</th>
+                  <th style="width: 250px;">Tiến độ</th>
                   <th>Thời hạn</th>
                   <th>Ghi chú</th>
                   <th>Hành động</th>
@@ -125,12 +138,11 @@
                   <td>
                     <div class="progress">
                       <div class="progress-bar" 
-                           ng-style="{ 'width': (goal.soTienDaDat / goal.soTienCanDat * 100) + '%' }"
-                           ng-class="{'complete': goal.soTienDaDat >= goal.soTienCanDat}"></div>
+                           role="progressbar" 
+                           ng-style="{'width': (goal.soTienDaDat / goal.soTienCanDat * 100) + '%', 'background-color': '#28a745'}">
+                      </div>
                     </div>
-                    <small>
-                      {{goal.soTienDaDat | number:0}} / {{goal.soTienCanDat | number:0}} ₫
-                    </small>
+                    <small>{{ goal.soTienDaDat | number }} / {{ goal.soTienCanDat | number }} ₫</small>
                   </td>
                   <td>{{goal.hanHoanThanh | date:'dd/MM/yyyy' || '-'}}</td>
                   <td>{{goal.moTa || '-'}}</td>
@@ -179,11 +191,14 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>09/12/2024</td>
-                  <td>Du lịch Nhật Bản</td>
-                  <td>2,000,000 ₫</td>
-                  <td>Đóng góp tháng 12</td>
+                <tr ng-repeat="ls in vm.lichSuDongGop | orderBy:'-ngayDongGop'">
+                  <td>{{ls.ngayDongGop | date:'dd/MM/yyyy HH:mm'}}</td>
+                  <td><span class="badge" style="background:#e2e8f0">{{ls.mucTieuId}}</span></td>
+                  <td style="color:#16a34a; font-weight:bold;">+{{ls.soTien | number}} ₫</td>
+                  <td>{{ls.ghiChu}}</td>
+                </tr>
+                <tr ng-if="vm.lichSuDongGop.length === 0">
+                  <td colspan="4" style="text-align:center; color:#94a3b8;">Chưa có lịch sử đóng góp nào.</td>
                 </tr>
               </tbody>
             </table>

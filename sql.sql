@@ -407,3 +407,14 @@ SELECT * FROM dbo.NganSach ORDER BY TaiKhoanId, Id;
 SELECT * FROM dbo.MucTieuTietKiem ORDER BY TaiKhoanId, Id;
 SELECT TOP 50 * FROM dbo.ThongBao ORDER BY ThoiGianGui DESC, Id DESC;
 
+-- Đảm bảo có dữ liệu mẫu để không bị lỗi khóa ngoại (Foreign Key)
+SET IDENTITY_INSERT dbo.GiaoDich ON;
+IF NOT EXISTS (SELECT 1 FROM dbo.GiaoDich WHERE Id = 1)
+BEGIN
+    INSERT INTO dbo.GiaoDich (Id, TaiKhoanId, ViId, DanhMucId, SoTien, LoaiGD, NgayGD, GhiChu)
+    VALUES (1, 1, 1, 1, 0, N'Thu', GETDATE(), N'Giao dịch mặc định cho Đóng góp');
+END
+SET IDENTITY_INSERT dbo.GiaoDich OFF;
+
+ALTER TABLE dbo.DongGopMucTieu DROP CONSTRAINT FK_DongGop_GiaoDich;
+ALTER TABLE dbo.DongGopMucTieu ALTER COLUMN GiaoDichId INT NULL;
