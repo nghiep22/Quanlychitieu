@@ -1,0 +1,628 @@
+[
+  {
+    "ContainingType": "QL_NganQuy.Controllers.BaoCaoController",
+    "Method": "GetSoSanhNganSach",
+    "RelativePath": "api/BaoCao/so-sanh-ngan-sach/{taiKhoanId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "taiKhoanId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "tuNgay",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "denNgay",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.BaoCaoController",
+    "Method": "GetBaoCaoTheoDanhMuc",
+    "RelativePath": "api/BaoCao/theo-danh-muc",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "filter",
+        "Type": "QL_NganQuy.DTO.BaoCaoFilterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.BaoCaoController",
+    "Method": "GetBaoCaoTheoNgay",
+    "RelativePath": "api/BaoCao/theo-ngay/{taiKhoanId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "taiKhoanId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "tuNgay",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "denNgay",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.BaoCaoController",
+    "Method": "GetBaoCaoTheoThang",
+    "RelativePath": "api/BaoCao/theo-thang/{taiKhoanId}/{nam}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "taiKhoanId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "nam",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.BaoCaoController",
+    "Method": "GetBaoCaoTheoVi",
+    "RelativePath": "api/BaoCao/theo-vi/{taiKhoanId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "taiKhoanId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "tuNgay",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "denNgay",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.BaoCaoController",
+    "Method": "GetBaoCaoTongHop",
+    "RelativePath": "api/BaoCao/tong-hop/{taiKhoanId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "taiKhoanId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "tuNgay",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "denNgay",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.BaoCaoController",
+    "Method": "GetTongQuanThuChi",
+    "RelativePath": "api/BaoCao/tong-quan",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "filter",
+        "Type": "QL_NganQuy.DTO.BaoCaoFilterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.BaoCaoController",
+    "Method": "GetTopGiaoDich",
+    "RelativePath": "api/BaoCao/top-giao-dich/{taiKhoanId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "taiKhoanId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "tuNgay",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "denNgay",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "loaiGD",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "top",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.TaiKhoanController",
+    "Method": "GetAll",
+    "RelativePath": "api/TaiKhoan",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.TaiKhoanController",
+    "Method": "Create",
+    "RelativePath": "api/TaiKhoan",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "QL_NganQuy.DTO.CreateTaiKhoanDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.TaiKhoanController",
+    "Method": "GetById",
+    "RelativePath": "api/TaiKhoan/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.TaiKhoanController",
+    "Method": "Update",
+    "RelativePath": "api/TaiKhoan/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "QL_NganQuy.DTO.UpdateTaiKhoanDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.TaiKhoanController",
+    "Method": "Delete",
+    "RelativePath": "api/TaiKhoan/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.TaiKhoanController",
+    "Method": "Search",
+    "RelativePath": "api/TaiKhoan/search",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "filter",
+        "Type": "QL_NganQuy.DTO.TaiKhoanFilterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.ThongBaoController",
+    "Method": "Create",
+    "RelativePath": "api/ThongBao",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "QL_NganQuy.DTO.CreateThongBaoDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.ThongBaoController",
+    "Method": "GetById",
+    "RelativePath": "api/ThongBao/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "taiKhoanId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.ThongBaoController",
+    "Method": "Update",
+    "RelativePath": "api/ThongBao/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "QL_NganQuy.DTO.UpdateThongBaoDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "taiKhoanId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.ThongBaoController",
+    "Method": "Delete",
+    "RelativePath": "api/ThongBao/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "taiKhoanId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.ThongBaoController",
+    "Method": "CleanupOld",
+    "RelativePath": "api/ThongBao/cleanup/{taiKhoanId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "taiKhoanId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "daysOld",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.ThongBaoController",
+    "Method": "GetByLoai",
+    "RelativePath": "api/ThongBao/loai/{taiKhoanId}/{loai}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "taiKhoanId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "loai",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.ThongBaoController",
+    "Method": "MarkAllAsRead",
+    "RelativePath": "api/ThongBao/mark-all-read/{taiKhoanId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "taiKhoanId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.ThongBaoController",
+    "Method": "MarkAsRead",
+    "RelativePath": "api/ThongBao/mark-read/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "taiKhoanId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.ThongBaoController",
+    "Method": "GetPaged",
+    "RelativePath": "api/ThongBao/paged",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "filter",
+        "Type": "QL_NganQuy.DTO.ThongBaoFilterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.ThongBaoController",
+    "Method": "GetThongKe",
+    "RelativePath": "api/ThongBao/thongke/{taiKhoanId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "taiKhoanId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.ThongBaoController",
+    "Method": "GetUnread",
+    "RelativePath": "api/ThongBao/unread/{taiKhoanId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "taiKhoanId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.ThongBaoController",
+    "Method": "GetAllByUser",
+    "RelativePath": "api/ThongBao/user/{taiKhoanId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "taiKhoanId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.ViController",
+    "Method": "GetAll",
+    "RelativePath": "api/Vi",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.ViController",
+    "Method": "Create",
+    "RelativePath": "api/Vi",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "QL_NganQuy.DTO.CreateViDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.ViController",
+    "Method": "GetById",
+    "RelativePath": "api/Vi/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.ViController",
+    "Method": "Update",
+    "RelativePath": "api/Vi/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "QL_NganQuy.DTO.UpdateViDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.ViController",
+    "Method": "Delete",
+    "RelativePath": "api/Vi/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.ViController",
+    "Method": "Search",
+    "RelativePath": "api/Vi/search",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "filter",
+        "Type": "QL_NganQuy.DTO.ViFilterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QL_NganQuy.Controllers.ViController",
+    "Method": "GetByTaiKhoanId",
+    "RelativePath": "api/Vi/user/{taiKhoanId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "taiKhoanId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

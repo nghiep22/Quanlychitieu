@@ -1,5 +1,5 @@
-﻿
-
+﻿create database QL_NganQuy;
+go
 USE QL_NganQuy;
 GO
 
@@ -17,9 +17,9 @@ CREATE TABLE dbo.TaiKhoan
     Quyen NVARCHAR(50) NULL,            -- 'Admin' / 'User'
     IsActive BIT NOT NULL DEFAULT 1
 );
-
+go
 CREATE INDEX IX_TaiKhoan_TenDangNhap ON dbo.TaiKhoan(TenDangNhap);
-
+go
 ------------------------------------------------------------
 -- 2) VI
 ------------------------------------------------------------
@@ -41,17 +41,17 @@ CREATE TABLE dbo.Vi
     CONSTRAINT CK_Vi_Loai CHECK (LoaiVi IN (N'Tiền mặt', N'Ngân hàng', N'Ví điện tử')),
     CONSTRAINT CK_Vi_TrangThai CHECK (TrangThai IN (N'Hoạt động', N'Khóa'))
 );
-
+go
 -- để GiaoDich FK (ViId, TaiKhoanId) đảm bảo ví thuộc đúng user
 ALTER TABLE dbo.Vi
 ADD CONSTRAINT UQ_Vi_Id_User UNIQUE (Id, TaiKhoanId);
-
+go
 CREATE INDEX IX_Vi_TaiKhoan ON dbo.Vi(TaiKhoanId);
-
+go
 CREATE UNIQUE INDEX UX_Vi_User_TenVi_NotDeleted
 ON dbo.Vi(TaiKhoanId, TenVi)
 WHERE DaXoa = 0;
-
+go
 ------------------------------------------------------------
 -- 3) DANHMUC
 ------------------------------------------------------------
@@ -73,16 +73,18 @@ CREATE TABLE dbo.DanhMuc
     CONSTRAINT CK_DanhMuc_Loai CHECK (Loai IN ('THU','CHI')),
     CONSTRAINT CK_DanhMuc_TrangThai CHECK (TrangThai IN (N'Hoạt động', N'Khóa'))
 );
-
+go
 -- để GiaoDich/NganSach FK (DanhMucId, TaiKhoanId) đảm bảo danh mục thuộc đúng user
 ALTER TABLE dbo.DanhMuc
 ADD CONSTRAINT UQ_DanhMuc_Id_User UNIQUE (Id, TaiKhoanId);
-
+go
 CREATE UNIQUE INDEX UX_DanhMuc_User_Ten_Loai_NotDeleted
 ON dbo.DanhMuc(TaiKhoanId, TenDanhMuc, Loai)
 WHERE DaXoa = 0;
-CREATE INDEX IX_DanhMuc_User_Loai ON dbo.DanhMuc(TaiKhoanId, Loai);
+go 
 
+CREATE INDEX IX_DanhMuc_User_Loai ON dbo.DanhMuc(TaiKhoanId, Loai);
+go
 ------------------------------------------------------------
 -- 4) GIAODICH
 ------------------------------------------------------------
@@ -108,10 +110,13 @@ CREATE TABLE dbo.GiaoDich
     CONSTRAINT FK_GD_Vi_User FOREIGN KEY (ViId, TaiKhoanId) REFERENCES dbo.Vi(Id, TaiKhoanId),
     CONSTRAINT FK_GD_DanhMuc_User FOREIGN KEY (DanhMucId, TaiKhoanId) REFERENCES dbo.DanhMuc(Id, TaiKhoanId)
 );
-
+go
 CREATE INDEX IX_GD_User_Ngay ON dbo.GiaoDich(TaiKhoanId, NgayGD DESC);
+go
 CREATE INDEX IX_GD_Vi_Ngay ON dbo.GiaoDich(ViId, NgayGD DESC);
+go
 CREATE INDEX IX_GD_DanhMuc_Ngay ON dbo.GiaoDich(DanhMucId, NgayGD DESC);
+go
 
 ------------------------------------------------------------
 -- 5) NGANSACH
@@ -137,9 +142,9 @@ CREATE TABLE dbo.NganSach
     CONSTRAINT CK_NS_Date CHECK (TGKetThuc >= TGBatDau),
     CONSTRAINT CK_NS_TrangThai CHECK (TrangThai IN (N'Hoạt động', N'Hết hạn', N'Khóa'))
 );
-
+go
 CREATE INDEX IX_NS_User_Time ON dbo.NganSach(TaiKhoanId, TGBatDau DESC, TGKetThuc);
-
+go
 ------------------------------------------------------------
 -- 6) MUCTIEUTIETKIEM
 ------------------------------------------------------------
@@ -162,9 +167,9 @@ NgayTao DATETIME2 NOT NULL DEFAULT SYSDATETIME(),
     CONSTRAINT CK_MT_DaDat CHECK (SoTienDaDat >= 0),
     CONSTRAINT CK_MT_TrangThai CHECK (TrangThai IN (N'Đang thực hiện', N'Hoàn thành', N'Hủy'))
 );
-
+go
 CREATE INDEX IX_MT_User_TrangThai ON dbo.MucTieuTietKiem(TaiKhoanId, TrangThai);
-
+go
 ------------------------------------------------------------
 -- 7) THANHTOAN (tùy chọn)
 ------------------------------------------------------------
@@ -183,9 +188,9 @@ CREATE TABLE dbo.ThanhToan
     CONSTRAINT CK_TT_SoTien CHECK (SoTienThanhToan > 0),
     CONSTRAINT CK_TT_TrangThai CHECK (TrangThai IN (N'Đã thanh toán', N'Chờ thanh toán'))
 );
-
+go
 CREATE INDEX IX_TT_Ngay ON dbo.ThanhToan(NgayThanhToan DESC);
-
+go
 ------------------------------------------------------------
 -- 8) THONGBAO
 ------------------------------------------------------------
@@ -210,9 +215,9 @@ CREATE TABLE dbo.ThongBao
     CONSTRAINT CK_TB_Loai CHECK (Loai IN (N'Cảnh báo', N'Thông tin', N'Thành công', N'Lỗi')),
     CONSTRAINT CK_TB_TrangThai CHECK (TrangThai IN (N'Chưa xem', N'Đã xem'))
 );
-
+go
 CREATE INDEX IX_TB_User_Time ON dbo.ThongBao(TaiKhoanId, ThoiGianGui DESC);
-
+go
 ------------------------------------------------------------
 -- 9) NHATKY_HETHONG
 ------------------------------------------------------------
@@ -232,9 +237,9 @@ GiaTriMoi NVARCHAR(1000) NULL,
     CONSTRAINT FK_NK_TaiKhoan FOREIGN KEY (TaiKhoanId) REFERENCES dbo.TaiKhoan(Id),
     CONSTRAINT CK_NK_HanhDong CHECK (HanhDong IN (N'Tạo', N'Chỉnh sửa', N'Xóa', N'Khôi phục', N'Đăng nhập', N'Đăng xuất'))
 );
-
+go
 CREATE INDEX IX_NK_Time ON dbo.NhatKyHeThong(ThoiGian DESC);
-
+go
 ------------------------------------------------------------
 -- 10) CHUYENTIEN_VI
 ------------------------------------------------------------
@@ -264,9 +269,9 @@ CREATE TABLE dbo.ChuyenTienVi
     CONSTRAINT CK_CTV_SoTien CHECK (SoTien > 0),
     CONSTRAINT CK_CTV_TrangThai CHECK (TrangThai IN (N'Thành công', N'Thất bại', N'Đang xử lý'))
 );
-
+go
 CREATE INDEX IX_CTV_User_Ngay ON dbo.ChuyenTienVi(TaiKhoanId, NgayChuyen DESC);
-
+go
 ------------------------------------------------------------
 -- 11) DONGGOP_MUCTIEU
 ------------------------------------------------------------
@@ -287,9 +292,9 @@ CREATE TABLE dbo.DongGopMucTieu
     CONSTRAINT FK_DG_GiaoDich FOREIGN KEY (GiaoDichId) REFERENCES dbo.GiaoDich(Id),
     CONSTRAINT CK_DG_SoTien CHECK (SoTien > 0)
 );
-
+go
 CREATE INDEX IX_DG_MucTieu_Ngay ON dbo.DongGopMucTieu(MucTieuId, NgayDongGop DESC);
-
+go
 ------------------------------------------------------------
 -- 12) SEED DATA (KHÔNG GO NỮA -> biến không mất)
 ------------------------------------------------------------

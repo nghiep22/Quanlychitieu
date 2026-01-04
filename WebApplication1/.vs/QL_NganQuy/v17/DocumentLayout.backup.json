@@ -1,0 +1,522 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\services\\taikhoanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\services\\taikhoanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\dtos\\taikhoandto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\dtos\\taikhoandto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\dtos\\thongbaodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\dtos\\thongbaodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\QL_NganQuy.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\dtos\\vidto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\QL_NganQuy.csproj|solutionrelative:webapplication1\\dtos\\vidto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\dtos\\baocaodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\dtos\\baocaodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\QL_NganQuy.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\models\\vi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\QL_NganQuy.csproj|solutionrelative:webapplication1\\models\\vi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\QL_NganQuy.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\controllers\\vicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\QL_NganQuy.csproj|solutionrelative:webapplication1\\controllers\\vicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\QL_NganQuy.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\services\\viservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\QL_NganQuy.csproj|solutionrelative:webapplication1\\services\\viservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\QL_NganQuy.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\services\\iviservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\QL_NganQuy.csproj|solutionrelative:webapplication1\\services\\iviservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\models\\baocao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\baocao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\models\\taikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\taikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\models\\thongbao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\thongbao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\QL_NganQuy.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\repositories\\virepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\QL_NganQuy.csproj|solutionrelative:webapplication1\\repositories\\virepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\QL_NganQuy.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\repositories\\ivirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\QL_NganQuy.csproj|solutionrelative:webapplication1\\repositories\\ivirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\repositories\\baocaorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\repositories\\baocaorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\repositories\\itaikhoanrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\repositories\\itaikhoanrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\repositories\\taikhoanrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\repositories\\taikhoanrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\services\\itaikhoanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\services\\itaikhoanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\services\\ithongbaoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\services\\ithongbaoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\controllers\\taikhoancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\controllers\\taikhoancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\services\\baocaoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\services\\baocaoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\controllers\\baocaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\controllers\\baocaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\controllers\\thongbaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\controllers\\thongbaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\repositories\\ibaocaorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\repositories\\ibaocaorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\repositories\\thongbaorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\repositories\\thongbaorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\repositories\\ithongbaorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\repositories\\ithongbaorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\services\\thongbaoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\services\\thongbaoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|c:\\users\\dinht\\downloads\\quoc an\\webapplication1\\webapplication1\\database\\dbconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EFA3BDA-89F2-4591-A280-A7E8FC44F21D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\database\\dbconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Vi.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Models\\Vi.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\Vi.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Models\\Vi.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\Vi.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T14:46:38.214Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "BaoCao.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Models\\BaoCao.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\BaoCao.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Models\\BaoCao.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\BaoCao.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T08:11:44.782Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ViService.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Services\\ViService.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Services\\ViService.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Services\\ViService.cs",
+              "RelativeToolTip": "WebApplication1\\Services\\ViService.cs",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAYwFMAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T14:45:24.784Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ViController.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Controllers\\ViController.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Controllers\\ViController.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Controllers\\ViController.cs",
+              "RelativeToolTip": "WebApplication1\\Controllers\\ViController.cs",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAYwIEAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T14:45:01.4Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ViDto.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\DTOs\\ViDto.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\DTOs\\ViDto.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\DTOs\\ViDto.cs",
+              "RelativeToolTip": "WebApplication1\\DTOs\\ViDto.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAA9wBIAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T14:46:25.468Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BaoCaoDto.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\DTOs\\BaoCaoDto.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\DTOs\\BaoCaoDto.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\DTOs\\BaoCaoDto.cs",
+              "RelativeToolTip": "WebApplication1\\DTOs\\BaoCaoDto.cs",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAvwGAAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T08:11:01.13Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ThongBaoDto.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\DTOs\\ThongBaoDto.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\DTOs\\ThongBaoDto.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\DTOs\\ThongBaoDto.cs",
+              "RelativeToolTip": "WebApplication1\\DTOs\\ThongBaoDto.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwEEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T07:37:30.845Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TaiKhoanDto.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\DTOs\\TaiKhoanDto.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\DTOs\\TaiKhoanDto.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\DTOs\\TaiKhoanDto.cs",
+              "RelativeToolTip": "WebApplication1\\DTOs\\TaiKhoanDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T14:32:31.639Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TaiKhoanService.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Services\\TaiKhoanService.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Services\\TaiKhoanService.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Services\\TaiKhoanService.cs",
+              "RelativeToolTip": "WebApplication1\\Services\\TaiKhoanService.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAowEkAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T14:31:15.761Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "TaiKhoan.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Models\\TaiKhoan.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\TaiKhoan.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Models\\TaiKhoan.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\TaiKhoan.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T14:32:49.938Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ThongBao.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Models\\ThongBao.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\ThongBao.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Models\\ThongBao.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\ThongBao.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T07:37:45.752Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Program.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Program.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Program.cs",
+              "RelativeToolTip": "WebApplication1\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADgAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T07:33:14.316Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IViService.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Services\\IViService.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Services\\IViService.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Services\\IViService.cs",
+              "RelativeToolTip": "WebApplication1\\Services\\IViService.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA8wA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T14:45:37.457Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ViRepository.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Repositories\\ViRepository.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Repositories\\ViRepository.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Repositories\\ViRepository.cs",
+              "RelativeToolTip": "WebApplication1\\Repositories\\ViRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T14:45:51.964Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "IViRepository.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Repositories\\IViRepository.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Repositories\\IViRepository.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Repositories\\IViRepository.cs",
+              "RelativeToolTip": "WebApplication1\\Repositories\\IViRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T14:46:10.588Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ITaiKhoanRepository.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Repositories\\ITaiKhoanRepository.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Repositories\\ITaiKhoanRepository.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Repositories\\ITaiKhoanRepository.cs",
+              "RelativeToolTip": "WebApplication1\\Repositories\\ITaiKhoanRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T14:32:09.783Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "TaiKhoanRepository.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Repositories\\TaiKhoanRepository.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Repositories\\TaiKhoanRepository.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Repositories\\TaiKhoanRepository.cs",
+              "RelativeToolTip": "WebApplication1\\Repositories\\TaiKhoanRepository.cs",
+              "ViewState": "AgIAAI8AAAAAAAAAAAAgwLUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T14:31:59.261Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "BaoCaoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Repositories\\BaoCaoRepository.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Repositories\\BaoCaoRepository.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Repositories\\BaoCaoRepository.cs",
+              "RelativeToolTip": "WebApplication1\\Repositories\\BaoCaoRepository.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T08:10:23.736Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ITaiKhoanService.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Services\\ITaiKhoanService.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Services\\ITaiKhoanService.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Services\\ITaiKhoanService.cs",
+              "RelativeToolTip": "WebApplication1\\Services\\ITaiKhoanService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T14:31:25.997Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "TaiKhoanController.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Controllers\\TaiKhoanController.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Controllers\\TaiKhoanController.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Controllers\\TaiKhoanController.cs",
+              "RelativeToolTip": "WebApplication1\\Controllers\\TaiKhoanController.cs",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAgwHkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T14:30:59.383Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "BaoCaoService.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Services\\BaoCaoService.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Services\\BaoCaoService.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Services\\BaoCaoService.cs",
+              "RelativeToolTip": "WebApplication1\\Services\\BaoCaoService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T08:09:53.199Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "IThongBaoService.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Services\\IThongBaoService.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Services\\IThongBaoService.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Services\\IThongBaoService.cs",
+              "RelativeToolTip": "WebApplication1\\Services\\IThongBaoService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T07:35:56.295Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "IBaoCaoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Repositories\\IBaoCaoRepository.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Repositories\\IBaoCaoRepository.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Repositories\\IBaoCaoRepository.cs",
+              "RelativeToolTip": "WebApplication1\\Repositories\\IBaoCaoRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T08:10:34.721Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "BaoCaoController.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Controllers\\BaoCaoController.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Controllers\\BaoCaoController.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Controllers\\BaoCaoController.cs",
+              "RelativeToolTip": "WebApplication1\\Controllers\\BaoCaoController.cs",
+              "ViewState": "AgIAAHQAAAAAAAAAAAAuwIAAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T08:09:23.428Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ThongBaoController.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Controllers\\ThongBaoController.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Controllers\\ThongBaoController.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Controllers\\ThongBaoController.cs",
+              "RelativeToolTip": "WebApplication1\\Controllers\\ThongBaoController.cs",
+              "ViewState": "AgIAALoAAAAAAAAAAAAwwOQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T07:33:52.411Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "ThongBaoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Repositories\\ThongBaoRepository.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Repositories\\ThongBaoRepository.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Repositories\\ThongBaoRepository.cs",
+              "RelativeToolTip": "WebApplication1\\Repositories\\ThongBaoRepository.cs",
+              "ViewState": "AgIAAC0BAAAAAAAAAAAwwD8BAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T07:36:26.48Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "IThongBaoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Repositories\\IThongBaoRepository.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Repositories\\IThongBaoRepository.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Repositories\\IThongBaoRepository.cs",
+              "RelativeToolTip": "WebApplication1\\Repositories\\IThongBaoRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T07:36:41.796Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\appsettings.json",
+              "RelativeDocumentMoniker": "WebApplication1\\appsettings.json",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\appsettings.json",
+              "RelativeToolTip": "WebApplication1\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-01-03T07:19:37.81Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "ThongBaoService.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Services\\ThongBaoService.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Services\\ThongBaoService.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Services\\ThongBaoService.cs",
+              "RelativeToolTip": "WebApplication1\\Services\\ThongBaoService.cs",
+              "ViewState": "AgIAANQAAAAAAAAAAAAwwP4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T07:35:10.393Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "DbConnection.cs",
+              "DocumentMoniker": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Database\\DbConnection.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Database\\DbConnection.cs",
+              "ToolTip": "C:\\Users\\dinht\\Downloads\\quoc an\\WebApplication1\\WebApplication1\\Database\\DbConnection.cs",
+              "RelativeToolTip": "WebApplication1\\Database\\DbConnection.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T07:48:45.202Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

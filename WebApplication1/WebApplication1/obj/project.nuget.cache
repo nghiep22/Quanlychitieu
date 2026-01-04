@@ -1,0 +1,138 @@
+{
+  "version": 2,
+  "dgSpecHash": "WGnC374J1Gs=",
+  "success": false,
+  "projectFilePath": "D:\\Quanlychitieu\\WebApplication1\\WebApplication1\\QL_NganQuy.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Error",
+      "message": "Failed to download package 'System.Diagnostics.DiagnosticSource.8.0.1' from 'https://api.nuget.org/v3-flatcontainer/system.diagnostics.diagnosticsource/8.0.1/system.diagnostics.diagnosticsource.8.0.1.nupkg'.\r\nThere is not enough space on the disk."
+    },
+    {
+      "code": "Undefined",
+      "level": "Error",
+      "message": "Failed to download package 'Microsoft.OpenApi.1.6.23' from 'https://api.nuget.org/v3-flatcontainer/microsoft.openapi/1.6.23/microsoft.openapi.1.6.23.nupkg'.\r\nThere is not enough space on the disk."
+    },
+    {
+      "code": "Undefined",
+      "level": "Error",
+      "message": "Failed to download package 'Microsoft.AspNetCore.Authentication.Core.2.3.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.aspnetcore.authentication.core/2.3.0/microsoft.aspnetcore.authentication.core.2.3.0.nupkg'.\r\nThere is not enough space on the disk."
+    },
+    {
+      "code": "Undefined",
+      "level": "Error",
+      "message": "Failed to download package 'Microsoft.Extensions.FileProviders.Abstractions.8.0.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.extensions.fileproviders.abstractions/8.0.0/microsoft.extensions.fileproviders.abstractions.8.0.0.nupkg'.\r\nThere is not enough space on the disk."
+    },
+    {
+      "code": "Undefined",
+      "level": "Error",
+      "message": "Failed to download package 'Microsoft.AspNetCore.Mvc.Abstractions.2.3.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.aspnetcore.mvc.abstractions/2.3.0/microsoft.aspnetcore.mvc.abstractions.2.3.0.nupkg'.\r\nThere is not enough space on the disk."
+    },
+    {
+      "code": "Undefined",
+      "level": "Error",
+      "message": "Failed to download package 'Microsoft.AspNetCore.Routing.2.3.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.aspnetcore.routing/2.3.0/microsoft.aspnetcore.routing.2.3.0.nupkg'.\r\nThere is not enough space on the disk."
+    },
+    {
+      "code": "Undefined",
+      "level": "Error",
+      "message": "The feed 'nuget.org [https://api.nuget.org/v3/index.json]' lists package 'Microsoft.AspNetCore.Authentication.Core.2.3.0' but multiple attempts to download the nupkg have failed. The feed is either invalid or required packages were removed while the current operation was in progress. Verify the package exists on the feed and try again."
+    },
+    {
+      "code": "Undefined",
+      "level": "Error",
+      "message": "Failed to download package 'System.Threading.Tasks.Extensions.4.6.0' from 'https://api.nuget.org/v3-flatcontainer/system.threading.tasks.extensions/4.6.0/system.threading.tasks.extensions.4.6.0.nupkg'.\r\nThere is not enough space on the disk."
+    },
+    {
+      "code": "Undefined",
+      "level": "Error",
+      "message": "Failed to download package 'Microsoft.AspNetCore.Authorization.Policy.2.3.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.aspnetcore.authorization.policy/2.3.0/microsoft.aspnetcore.authorization.policy.2.3.0.nupkg'.\r\nThere is not enough space on the disk."
+    },
+    {
+      "code": "Undefined",
+      "level": "Error",
+      "message": "Failed to download package 'Microsoft.AspNetCore.Http.Extensions.2.3.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.aspnetcore.http.extensions/2.3.0/microsoft.aspnetcore.http.extensions.2.3.0.nupkg'.\r\nThere is not enough space on the disk."
+    },
+    {
+      "code": "Undefined",
+      "level": "Error",
+      "message": "The feed 'nuget.org [https://api.nuget.org/v3/index.json]' lists package 'System.Threading.Tasks.Extensions.4.6.0' but multiple attempts to download the nupkg have failed. The feed is either invalid or required packages were removed while the current operation was in progress. Verify the package exists on the feed and try again."
+    },
+    {
+      "code": "Undefined",
+      "level": "Error",
+      "message": "The feed 'nuget.org [https://api.nuget.org/v3/index.json]' lists package 'Microsoft.AspNetCore.Authorization.Policy.2.3.0' but multiple attempts to download the nupkg have failed. The feed is either invalid or required packages were removed while the current operation was in progress. Verify the package exists on the feed and try again."
+    },
+    {
+      "code": "Undefined",
+      "level": "Error",
+      "message": "Failed to download package 'Microsoft.AspNetCore.ResponseCaching.Abstractions.2.3.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.aspnetcore.responsecaching.abstractions/2.3.0/microsoft.aspnetcore.responsecaching.abstractions.2.3.0.nupkg'.\r\nThere is not enough space on the disk."
+    },
+    {
+      "code": "Undefined",
+      "level": "Error",
+      "message": "Failed to download package 'Microsoft.AspNetCore.Http.2.3.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.aspnetcore.http/2.3.0/microsoft.aspnetcore.http.2.3.0.nupkg'.\r\nThere is not enough space on the disk."
+    },
+    {
+      "code": "Undefined",
+      "level": "Error",
+      "message": "Failed to download package 'runtime.native.System.Data.SqlClient.sni.4.4.0' from 'https://api.nuget.org/v3-flatcontainer/runtime.native.system.data.sqlclient.sni/4.4.0/runtime.native.system.data.sqlclient.sni.4.4.0.nupkg'.\r\nThere is not enough space on the disk."
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Failed to retrieve information about 'System.Diagnostics.DiagnosticSource' from remote source 'https://api.nuget.org/v3-flatcontainer/system.diagnostics.diagnosticsource/index.json'.\r\n  There is not enough space on the disk.",
+      "libraryId": "System.Diagnostics.DiagnosticSource"
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Failed to retrieve information about 'Microsoft.OpenApi' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.openapi/index.json'.\r\n  There is not enough space on the disk.",
+      "libraryId": "Microsoft.OpenApi"
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Failed to retrieve information about 'Microsoft.Extensions.FileProviders.Abstractions' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.extensions.fileproviders.abstractions/index.json'.\r\n  There is not enough space on the disk.",
+      "libraryId": "Microsoft.Extensions.FileProviders.Abstractions"
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Failed to retrieve information about 'Microsoft.AspNetCore.Mvc.Abstractions' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.aspnetcore.mvc.abstractions/index.json'.\r\n  There is not enough space on the disk.",
+      "libraryId": "Microsoft.AspNetCore.Mvc.Abstractions"
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Failed to retrieve information about 'Microsoft.AspNetCore.Http.Extensions' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.aspnetcore.http.extensions/index.json'.\r\n  There is not enough space on the disk.",
+      "libraryId": "Microsoft.AspNetCore.Http.Extensions"
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Failed to retrieve information about 'Microsoft.AspNetCore.Routing' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.aspnetcore.routing/index.json'.\r\n  There is not enough space on the disk.",
+      "libraryId": "Microsoft.AspNetCore.Routing"
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Failed to retrieve information about 'Microsoft.AspNetCore.ResponseCaching.Abstractions' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.aspnetcore.responsecaching.abstractions/index.json'.\r\n  There is not enough space on the disk.",
+      "libraryId": "Microsoft.AspNetCore.ResponseCaching.Abstractions"
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Failed to retrieve information about 'Microsoft.AspNetCore.Http' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.aspnetcore.http/index.json'.\r\n  There is not enough space on the disk.",
+      "libraryId": "Microsoft.AspNetCore.Http"
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Failed to retrieve information about 'runtime.native.System.Data.SqlClient.sni' from remote source 'https://api.nuget.org/v3-flatcontainer/runtime.native.system.data.sqlclient.sni/index.json'.\r\n  There is not enough space on the disk.",
+      "libraryId": "runtime.native.System.Data.SqlClient.sni"
+    }
+  ]
+}
